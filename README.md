@@ -1,9 +1,9 @@
-<h1 align='center'>Emuera 中文文档计划</h1>
+<h1 align='center'>Emuera 中文文档</h1>
+<h3 align='center'>文档入口</h3>
+<div align='center'><a href="1st Edition/Menu">第一版（1st Edition）</a></div>
+<div align='center'>第二版（2nd Edition）</div>
 
--   [EraBasic 快速开始](Erabasic Quick Start.md)
--   [EraBasic 教程](Erabasic Tutorial.md)
--   [EraBasic 手册](Erabasic Manual.md)
--   [EraBasic API 引用](Erabasic API Reference.md)
--   [Emuera 手册](Emuera Manual.md)
--   [Emuera 代码分析](Emuera Code Analyze.md)
+## 版本说明
 
+- 第一版：诣在对与Emuera相关的关键文档进行翻译；（进行中）
+- 第二版：诣在针对Emuera文档进行二次创作，平滑学习曲线。（尚未开始）
