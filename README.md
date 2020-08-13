@@ -1,6 +1,6 @@
 <h1 align='center'>Emuera 中文文档</h1>
 <h3 align='center'>文档入口</h3>
-<div align='center'><a href="1st Edition/Menu">第一版（1st Edition）</a></div>
+<div align='center'><a href="1st Edition/Menu.md">第一版（1st Edition）</a></div>
 <div align='center'>第二版（2nd Edition）</div>
 
 ## 版本说明
