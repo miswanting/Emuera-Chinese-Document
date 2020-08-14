@@ -5,7 +5,7 @@
 
 ### 第一节　需求准备
 
-只需要Emuera.exe本体就好了，本文使用版本1.8.2.4。
+只需要 Emuera.exe 本体就好了，本文使用版本1.8.2.4。
 
 ### 第二节　一个最简单的程序长什么样子？
 
@@ -30,6 +30,94 @@ PRINT HELLO WORLD
 QUIT  ; 退出程序
 ```
 
+这就是我们的第一个可运行的完整程序了，打开程序运行一下，看看是怎样的。
 
+## 第二章　程序流程
 
-在一个文件夹下有了
+### 第一节　TITLE
+
+### 第二节　FIRST
+
+### 第三节　LOADGAME
+
+### 第四节　LOADDATAEND
+
+### 第五节　SHOP
+
+### 第六节　SAVEGAME
+
+### 第七节　TRAIN
+
+### 第八节　ABLUP
+
+### 第九节　AFTERTRAIN
+
+### 第十节　TURNEND
+
+## 第三章　命令
+
+### 第一节　PRINT 命令
+
+#### PRINT(|V|S|FORM|FORMS)(|K|D)(|L|W)
+
+#### PRINTSINGLE(|V|S|FORM|FORMS)(|K|D)
+
+#### PRINT(|FORM)(C|LC)(|K|D)
+
+#### PRINTDATA(|K|D)(|L|W)
+
+#### PRINTBUTTON(|C|LC)
+
+#### PRINTPLAIN(|FORM)
+
+#### CUSTOMDRAWLINE
+
+#### DRAWLINEFORM
+
+#### REUSELASTLINE
+
+#### CLEARLINE
+
+#### PRINT_IMG
+
+#### PRINT_RECT
+
+#### PRINT_RECT
+
+#### PRINT_SPACE
+
+### 第二节　样式控制
+
+### 第三节　字符串控制
+
+### 第四节　数字控制
+
+### 第五节　字符控制
+
+### 第六节　变量控制
+
+### 第七节　存读档控制
+
+### 第八节　时间控制
+
+### 第九节　输入控制
+
+### 第十节　随机数控制
+
+### 第十一节　调试辅助控制
+
+### 第十二节　跳转控制
+
+### 第十三节　返回控制
+
+### 第十四节　DEBUG 命令
+
+### 第十五节　工具提示控制
+
+### 第十六节　HTML 命令
+
+### 第十七节　AWAIT 命令
+
+### 第十八节　图像控制
+
+### 第十九节　其他命令
