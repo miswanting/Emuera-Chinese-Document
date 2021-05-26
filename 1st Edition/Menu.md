@@ -2,6 +2,685 @@
 
 <h3 align='center'>目录</h3>
 
+- [§0]() 文档说明
+- [§1](#§1 EraMaker之章 Chapter of EraMaker) EraMaker之章 `Chapter of EraMaker`
+  - [§1.1]() CSV文件格式 `CSV file format` [CSVファイル書式](http://cbaku.com/b/erakanon/eramacsv.html)
+  - [§1.2]() ERB文件格式 `ERB file format` [ERBファイル書式](http://cbaku.com/b/erakanon/eramaerb.html)
+  - [§1.3]() EraBasic的结构 `Structure of EraBasic` [era basicの構造](http://cbaku.com/b/erakanon/eramaerc.html)
+  - [§1.4]() EraBasic变量列表 `List of EraBasic variables` [era basic変数リスト](http://cbaku.com/b/erakanon/eramavar.html)
+- [§2]() Emuera之章 `Chapter of Emuera`
+  - [§2.1]() 术语表 Glossary [用語集](https://osdn.net/projects/emuera/wiki/EmuDic)
+  - [§2.2]() 调试命令 Debugging commands [デバッグコマンド](https://osdn.net/projects/emuera/wiki/debugcom)
+  - [§2.3]() 调试模式 Debugging mode [デバッグモード](https://osdn.net/projects/emuera/wiki/debug)
+  - [§2.4]() `_replace.csv` [_replace.csv](https://osdn.net/projects/emuera/wiki/replace)
+  - [§2.5]() 强制配置项目 Force configurations [コンフィグ項目の強制](https://osdn.net/projects/emuera/wiki/exconfig)
+  - [§2.6]() 流程图 Flow diagram [フロー図](https://osdn.net/projects/emuera/wiki/flow)
+  - [§2.7]() 与EraMaker的差异 Differences from EraMaker [eramakerとの相違点](https://osdn.net/projects/emuera/wiki/diff)
+  - [§2.8]() 在Emuera中增加的扩展语法 New syntax for Emuera [Emueraで追加された拡張文法](https://osdn.net/projects/emuera/wiki/extended)
+    - [§2.8.1]() 常规 General [一般](https://osdn.net/projects/emuera/wiki/exetc)
+    - [§2.8.2]() 运算符 Operators [演算](https://osdn.net/projects/emuera/wiki/exop)
+    - [§2.8.3]() 常量与变量 Constants and Variables [定数・変数](https://osdn.net/projects/emuera/wiki/exvar)
+    - [§2.8.4]() 用户自定义变量 User Defined Variables [ユーザー定義の変数](https://osdn.net/projects/emuera/wiki/UserVars)
+    - [§2.8.5]() 命令 Commands [命令](https://osdn.net/projects/emuera/wiki/excom)
+    - [§2.8.6]() 函数与预处理器 Functions and Preprocessors [関数・プリプロセッサ](https://osdn.net/projects/emuera/wiki/exfunc)
+    - [§2.8.7]() 表达式函数 Functions for Expression [式中で使える関数](https://osdn.net/projects/emuera/wiki/exmeth)
+    - [§2.8.8]() 用户自定义的表达式内函数 User-defined intra-expression functions [ユーザー定義の式中関数](https://osdn.net/projects/emuera/wiki/UserMeth)
+    - [§2.8.9]() 头文件 Header files [ヘッダーファイル（ERH）](https://osdn.net/projects/emuera/wiki/ERH)
+    - [§2.8.10]() HTML_PRINT相关 HTML_PRINT related [HTML_PRINT関連](https://osdn.net/projects/emuera/wiki/exhtml)
+    - [§2.8.11]() 资源 Resources [リソースファイル](https://osdn.net/projects/emuera/wiki/resources)
+
+# §0 文档说明
+
+- 文档中涉及到的名称都进行了规范，统统采用帕斯卡命名法（大驼峰式命名法），即：
+  - `era light` → `EraLight`
+  - `erakanon` → `EraKanon`
+  - `era basic` → `EraBasic`
+
+# §1 EraMaker之章 Chapter of EraMaker 
+
+<div align="right"><a href="#§1 EraMaker之章 Chapter of EraMaker">§</a> <a href="#Emuera 中文文档（第一版）">TOP</a></div>
+
+## §1.1 CSV文件格式 CSV file format
+
+> http://cbaku.com/b/erakanon/eramacsv.html
+
+作者注：我觉得光看这个文件的描述，很难了解这个游戏。 如果先玩样板游戏（指EraLight），然后一边看样板游戏的CSV文件，就比较容易理解了。
+
+### 基本信息
+
+#### 关于CSV文件
+
+在`eramaker.exe`旁直接创建一个名为`CSV`的文件夹。
+CSV文件包含以下项目：
+
+| 文件名称     | 文件说明                                             |
+| :----------- | ---------------------------------------------------- |
+| GameBase.csv | 注册游戏的基本数据。                                 |
+| Palam.csv    | 注册训练时的参数（快乐C、痛苦、反感等）。            |
+| Abl.csv      | 注册你的能力(V感、仆从心、受虐狂等)。                |
+| Talent.csv   | 注册品质（懦弱、自制、快速恢复等）。                 |
+| Mark.csv     | 注册你的印记（快乐印记、羞辱印记等）。               |
+| Exp.csv      | 注册你的经历（V经历、手淫经历等）。                  |
+| Train.csv    | 注册训练命令（舔阴、口交、鞭子等）。                 |
+| Item.csv     | 注册物品（振动器、针等）。                           |
+| Str.csv      | 注册各种句子，以便在游戏中使用。                     |
+| CharaXX.csv  | 注册你的角色的初始数据，从Chara00.csv到Chara99.csv。 |
+
+#### 如何编写CSV文件
+
+在所有的CSV文件中，
+
+- 如果第一列中的第一个字符是半角分号`;`，则该行将被忽略。空行也会被忽略。
+
+如：
+
+```csv
+;体力和精神力的设置
+基本,0,2000
+基本,1,000
+
+;能力的设定
+能力,0,2
+```
+
+- 输入数字时请使用半角字符。
+
+正确：
+
+```csv
+121,Futa
+```
+
+错误：
+
+```csv
+１２１,Futa
+```
+
+- 如果你用""包住字符串，它就不能正常工作，OpenOffice和其他程序似乎默认就有这个特性。
+
+正确：
+
+```csv
+0,服从
+1,欲望
+2,技能
+```
+
+错误：
+
+```csv
+0,"服从"
+1,"欲望"
+2,"技能"
+```
+
+设置方法请参考您的电子表格软件的帮助。
+
+## 每个文件的格式
+
+#### GameBase.csv的格式
+
+在第一列中写入指令，在第二列和后续列中写入数据。
+
+##### `コード`,(数值)：游戏代号Code
+
+设置代表游戏的代号，用来防止意外加载其他游戏的保存数据。可以设置是你喜欢的任何数值。
+
+##### `バージョン`,(数值)：版本Version
+
+将游戏的版本设置为（号）。 画面上显示（数字）除以1000（0.10代表100）。初始化时，保存在不同版本中的数据将不会被加载。
+
+##### `タイトル`,[字符串]：标题Title
+
+将游戏的标题设置为（字符串）。 它将在启动时显示。
+
+##### `作者`,[字符串]：作者
+
+将游戏的作者设置为（字符串）。 它将在启动时显示。
+
+##### `製作年`,[字符串]：制作年份
+
+设置游戏制作年份为（字符串）。 它将在启动时显示。 它不是一个数字，所以可以写成2005-2006年。
+
+##### `追加情報`,[字符串]：附加信息
+
+将游戏的附加信息设置为（字符串）。 此信息将在启动时显示。
+
+##### `最初からいるキャラ`,(数值)：自始至终都有的人物
+
+在游戏开始时设置要训练的角色。 (数字)是一个字符号。 例如，1表示Chara01.csv，12表示Chara12.csv。
+
+##### `アイテムなし`,(数値)
+
+如果将(数字)设置为1，则可以不用物品进行训练，即使训练时需要物品，如振动棒等。 当你做一个没有物品概念的游戏时，将其设置为1。
+
+##### `バージョン違い認める`,(数値)
+
+如果保存数据的版本大于或等于(数)，即使版本不同，也可以读取。 如果你有一个不影响整个版本的升级，就设置这个。
+
+如：
+
+```csv
+;读取1.20版本后的保存数据。
+バージョン違い認める,1200
+```
+
+#### Palam.csv的格式
+
+- 参数编号写在第一栏，参数名称写在第二栏。
+- 参数编号从0开始，建议不要设置空号。
+- 参数号最大为99。
+
+#### Abl.csv的格式
+
+- 在第一栏写上能力编号，在第二栏写上能力名称。
+- 建议能力号的数字从0开始，不要有空号。
+- 能力的最大数量是99。
+
+#### Talent.csv的格式
+
+- 在第一栏写上特征编号，第二栏写上特征名称。
+- 也可以做一个空号。
+- 最小数是0，最大数是99。
+
+#### Mark.csv的格式
+
+- 在第一栏中写上印号，在第二栏中写上印名。
+- 建议从0开始，不要做空号。
+- 最大印数为99。
+
+#### Exp.csv的格式
+
+- 第一栏写经验号，第二栏写经验名称。
+- 你也可以做一个空号。
+- 最低经验数为0，最高经验数为99。
+
+#### Train.csv的格式
+
+- 命令编号写在第一栏，命令名称写在第二栏。
+- 你也可以做一个空号。
+- 命令号最小为0，最大为99。
+
+#### Item.csv的格式
+
+- 第一栏写商品编号，第二栏写商品名称，第三栏写商品价格。
+- 你也可以创建一个空号。
+- 最小项目数为0，最大为99。
+
+#### Str.csv的格式
+
+- 第一栏写的是字符串编号，第二栏写的是字符串。
+- 绳子的长度没有限制。
+- 字符串的长度不受限制，可以用空数。
+- 最小字符串数为0，最大为19999。
+
+#### CharaXX.csv的格式
+
+##### `番号`,[数值]
+
+将字符编号设置为（编号）。 这在创建字符之间的兼容性、同一字符的特殊版本等时非常重要。
+
+##### `名前`,[字符串]
+
+将字符的名称设置为（字符串）。 字符串的长度没有限制，但如果太长，可能会导致显示失真。
+
+##### `呼び名`,[字符串]
+
+将角色的昵称设置为（字符串）。 让我们用在有外号的人物身上。
+对字符串的长度没有限制，但如果太长，可能会导致显示失真。
+
+##### `基礎`,[数值1],[数值2]
+
+将字符基本参数中的（数值1）秒设置为（数值2）。
+在样本游戏中，第0个参数是强度，第1个参数是能量，第2个参数是射精仪。
+数字1）最低为0，最高为99。
+
+如：
+
+```csv
+;体力是2000，能量是1000。
+基礎,0,2000
+基礎,1,1000
+```
+
+##### `能力`,[数值1],[数值2]
+
+将角色初始能力的（数字1）th设置为（数字2）。
+请使用Abl.csv中指定的能力编号作为（编号1）。
+(数字2)没有限制，但在样本游戏中，它被设置为0到5。
+
+##### `素質`,[数值]
+
+将（数字）数字添加到你的角色特征中。
+请使用Talent.csv中指定的特征号作为（编号）。
+
+##### `経験`,[数值1],[数值2]
+
+将角色初始经验的（数字1）th设置为（数字2）。
+请使用Exp.csv中指定的经验号（数值为1）。
+
+##### `相性`,[数值1],[数值2]
+
+将（数字1）的字符的亲和力设置为（数字2）。
+请使用您在CharaXX.csv中指定的字符号作为（数字1）。
+(数字1)请使用您在CharaXX.csv中指定的字符数。100是(数字2)的标准值。
+
+##### `助手`,[数值]
+
+(数值)设为1时，从初始状态开始作为助手处理。
+
+##### `フラグ`,[数值1],[数值2]
+
+(数值1)th的字符标志被设置为(数值2)。
+(数字1)的最小值是0，最大值是999。
+角色旗帜可以根据游戏制作者的想法自由使用。 在样板游戏中，第0个标志为1的角色是 "特殊角色"。
+(*称为标志，但可以是0和1以外的整数值)
+
+### 须知
+
+##### 关于`Str.csv`中的`***`和`+++`
+
+在样本游戏EraLight的`Str.csv`中，有很多`***`和`+++`。 在游戏中，这些会分别转换为 `あかり`和`浩之ちゃん`。
+要想完全理解这一点，需要掌握EraBasic的知识，但现在，你应该知道，`***`是你正在训练的角色的**姓名**，`+++`是主角的名字，`$$$`是你要培养的角色的**昵称**。
+在示例游戏EraKanon中，有一个助手系统。 `///`是助手的名字，`===`是你当时训练的人的名字（主角或助手）。
+
+<div align="right"><a href="#§1.1 CSV文件格式 CSV file format">§</a> <a href="#Emuera 中文文档（第一版）">TOP</a></div>
+
+## §1.2 ERB文件格式 ERB file format
+
+> http://cbaku.com/b/erakanon/eramaerb.html
+
+我觉得光看这个文件的解释是很难让人对游戏有印象的。 如果先玩样板游戏，然后一边看样板游戏的ERB文件，就比较容易理解了。
+
+### 基本信息
+
+#### 关于ERB文件
+
+在eramaker.exe下直接放置一个名为ERB的文件夹，并将ERB文件放入该文件夹中。
+您可以使用任何文件名，只要扩展名是.ERB。
+请用记事本等文本编辑器编辑。
+
+#### 如何编写ERB文件
+
+##### 注释和空格
+
+在所有ERB文件中，
+
+- 如果第一个字符是半角分号`;`，则该行将被忽略。 另外，空行也会被忽略。
+- 请不要在行末加分号，也不要在行后写评论。
+- 行首的半角空格和制表符无论延续多少都会被忽略。
+
+正确：
+
+```
+;资金设置
+MONEY = 500
+    ;时间设置
+    DAY = 10
+    TIME = 1
+;开始游戏
+PRINT 做什么？
+```
+
+错误：
+
+```
+MONEY = 500;
+TIME = 5;（从第5天开始）
+```
+
+##### 半角输入
+
+输入数字、指令、变量名、函数名等时，请使用半角字符。
+
+正确：
+
+```
+MONEY = 500
+PRINT 开始游戏。
+```
+
+错误：
+
+```
+ＭＯＮＥＹ　＝　５００
+ＰＲＩＮＴ 开始游戏。
+```
+
+##### 字符串输入
+
+如果你用`""`包住字符串，它将无法正常工作。
+
+正确：
+
+```
+PRINT 这一天结束了……
+```
+
+错误：
+
+```
+PRINT "这一天结束了……"
+```
+
+##### 一行的完结
+
+即使在写长指令时，也不要把指令分成两行以上。
+
+正确：
+
+```
+PRINT 因为奈月的身体很敏感，也很有经验，就算你对她粗暴一点，她也会很高兴。虽然嘴上否认，但奈月却越发的暴躁了。但睡梦中的特殊情况，让我迟迟不敢大胆行动。
+```
+
+错误：
+
+```
+PRINT
+因为奈月的身体很敏感，也很有经验，就算你对她粗暴一点，她也会很高兴。虽然嘴上否认，但奈月却越发的暴躁了。但睡梦中的特殊情况，让我迟迟不敢大胆行动。
+```
+
+### 变量与命令
+
+#### 关于变量
+
+在训练SLG中，参数的变化至关重要。 因此，你必须学会如何使用 "变量"，它可以存储数据并进行加法和乘法等计算。
+
+##### 将数字放入变量中
+
+使用`=`。请按半角输入。在`=`前后用空格或~~制表符~~隔开。（译者：请使用空格）
+EraMaker中可以使用的数字基本都是整数。 不要输入小数。
+
+正确：
+
+```
+MONEY = 500
+```
+
+错误：
+
+```
+MONEY ＝ 500
+MONEY=500
+MONEY = 3.14
+```
+
+##### 将计算出的数字放入变量
+
+我们也用`=`。 注意，`*`是乘法，`/`是除法，`%`是求余。
+当计算结果是小数时，会被四舍五入。
+
+正确：
+
+```
+;MONEY的值为74
+MONEY = 15+34+25
+;MONEY的值为650
+MONEY = 150+(100-50)*10
+;MONEY的值为3
+MONEY = 10/3
+;MONEY的值为TIME的10倍
+MONEY = TIME*10
+;若DAY为0,1,2……则MONEY为0,10,20……超过7时，返回到0。
+MONEY = DAY%7*10
+```
+
+错误：
+
+```
+MONEY = 500×10÷4
+```
+
+##### 变量之间的加乘运算
+
+使用`+=`，`-=`，`*=`，`/=`和`%=`。
+
+正确：
+
+```
+MONEY = 100
+TIME = 12
+;MONEY的值为150
+MONEY += 50
+;MONEY的值为750
+MONEY *= 7-2
+;MONEY的值为80
+MONEY -= 670
+;MONEY的值为8
+MONEY %= TIME
+;MONEY的值为1
+MONEY /= TIME-4
+```
+
+##### 关于数组
+
+变量可以作为一个“数组”来访问。 变量可以以“数组”的形式访问。"数组 "是用来管理两个或多个同名变量的数据。
+对数组的访问使用半角冒号`:`。两者之间不要留有空格。
+数组后面可以放的最小数字是0。 最大值由变量决定。 详细情况请参考清单。
+可以在数组后面放一个变量，而不是一个数字。 但是，在数组之后，是不能带数组的。
+
+正确：
+
+```
+A = 35
+;为数组FLAG赋值
+FLAG:0 = 0
+FLAG:2 = 10
+FLAG:35 = 440
+;用数组FLAG进行计算
+FLAG:A += 100/FLAG:2
+FLAG:2 *= FLAG:A
+```
+
+错误：
+
+```
+FLAG：0 = 10
+FLAG : 52 = 1000
+FLAG:FLAG:20 = 10000
+FLAG:91881816 = 1
+```
+
+##### 关于二维数组
+
+有一个变量，可以例外地使用两个冒号来访问。 它是一个与人物数据有关的变量。
+它的访问形式是（变量名）:（占有字符号）:（变量号）。
+
+如：
+
+```
+A = 2 ;让第5个角色的第0种能力升到3级。
+ABL:5:0 = 3
+;让第A个(第2个)角色的第1种经验+2。
+EXP:A:1 += 2
+```
+
+##### 在屏幕上显示变量
+
+最简单的方法是使用说明书`PRINTV`和`PRINTVL`。 后面会详细讨论说明。
+
+如：
+
+```
+A = 2
+PRINTV A
+A = 30
+PRINTVL A
+B = 400
+PRINTVL B
+```
+
+输出：
+
+```
+230
+400
+```
+
+##### 关于字符串变量
+
+普通变量只能处理整数，但也有字符串变量可以处理字符串。 但功能有限。
+在屏幕上显示字符串变量时，使用指令`PRINTS`或`PRINTSL`。
+
+正确：
+
+```
+STR:0 = 测试文字
+PRINTSL STR:0
+```
+
+错误：
+
+```
+;无法对字符串变量使用+=
+STR:0 += 测试文字
+```
+
+##### 变量列表
+
+参考[此处]()。
+
+#### 关于命令（基本）
+
+命令可用于在屏幕上显示文本和进行条件判断。
+
+##### 如何编写命令
+
+这是基本的如何编写（指令名称）（指令内容）。 请用半角空格或制表符将（指令名称）和（指令内容）分开。
+对于没有（指令内容）的指令，请按原样改行。
+
+正确：
+
+```
+PRINT 这是一个测试。
+SIF 3 == 1+2
+    PRINT 这很明显。
+WAIT
+```
+
+错误：
+
+```
+PRINT这是一个测试。
+;等待输入
+WAIT 0
+```
+
+##### 显示文字
+
+`PRINT`是显示一个字符的命令，`PRINTL`显示一个字符并新建一行。
+`PRINTVW`显示变量的内容并等待输入。
+`PRINTVW`显示变量的内容并等待输入。
+`PRINTFORM`可以显示字符、变量、字符串变量等的组合，`PRINTFORML`做的和换行一样，`PRINTFORMW`做的和等待输入一样。
+`PRINTFORMS`将字符串变量的内容和`PRINTFORM`一样转换，并显示出来，`PRINTFORMSL`也是如此，还有换行，`PRINTFORMSW`也是如此，并等待输入。
+`PRINTFORMSW`做同样的工作，等待输入；`PRINTFORMSL`做同样的工作，等待输入；`PRINTFORMSW`做同样的工作，等待输入；`PRINTFORMSL`做同样的工作，等待输入。
+
+如：
+
+```
+MONEY = 500
+NAME:0 = 佐藤
+PRINT 存款有
+PRINTV MONEY
+PRINTL 元。
+PRINT 我的名字叫
+PRINTS NAME:0
+PRINTL 。
+PRINTFORML 重复一遍，我的名字叫%NAME:0%，我的存款有{MONEY}元。
+PRINTFORMW 如果存款加上1000日元，后支付600日元，剩下的就是{MONEY+1000-600}元。
+STR:0 = 将这些钱乘以5，就得到{(MONEY+1000-600)*5}元。
+PRINTFORMSW STR:0
+```
+
+输出：
+
+```
+存款有500元。
+我的名字叫佐藤。
+重复一遍，我的名字叫佐藤，我的存款有500元。
+如果得到1000日元，支付600元，剩下的就是900元。
+将这些钱乘以5，就得到4500元。
+```
+
+##### 条件判断
+
+如果条件表达式不是0，则`SIF`执行下一行。
+如果条件表达式不为0（有效时），`SIF`执行下一行。 0（无效时），跳过下一行。
+如果条件表达式不是0，则执行下一行，直到达到`ELSE`、`ELSEIF`和`ENDIF`。 如果是0，则跳过`ELSE`、`ELSEIF`和`ENDIF`；如果是0，则跳过`ELSE`、`ELSEIF`和`ENDIF`；如果是`ELSE`，则从下一行开始执行，直到到达`ENDIF`；如果是`ELSEIF`，则从下一行开始执行，直到到达`ELSE`、`ELSEIF`或`ENDIF`。 如果条件表达式是`ELSEIF`，则从下一行开始执行，直到到达`ELSE`、`ELSEIF`或`ENDIF`为止；否则，它将跳过，直到到达`ELSE`、`ELSEIF`或`ENDIF`为止，并重复该过程。
+
+如：
+
+```
+A = 1
+B = 2
+C = 4
+
+SIF A == 1
+    PRINTL 测试1
+SIF B != 1
+    PRINTL 测试2
+SIF C < 5
+    PRINTL 测试3
+IF A+B > 2
+    IF C >= 6
+        PRINTL 测试4
+    ELSE
+        PRINTL 测试5
+    ENDIF
+    IF A == 1 && B == 3
+        PRINTL 测试6
+    ELSEIF A == 1 || B == 3
+        PRINTL 测试7
+    ELSEIF A > 1 || (B > 2 && C > 2)
+        PRINTL 测试8
+    ENDIF
+ELSEIF A+B == 2
+    PRINTL 测试9
+ELSE
+    PRINTL 测试10
+ENDIF
+```
+
+输出：
+
+```
+测试1
+测试2
+测试3
+测试5
+测试7
+```
+
+用`==`表示 "等于"，用`!=`表示 "不等于"。`>`代表 "左大于右"，`>=`代表 "左不小于右"，`<`代表 "右大于左"，`<=`代表 "右不小于左"。均为半角。
+用`&&`表示“与”，用`||`表示“或”。均为半角。
+可以用括号来判断更复杂的条件。
+
+##### 输入和等待输入
+
+`WAIT`是通过显示句子等待输入时使用的。
+（注：一般情况下，你可以用`PRINTW`来表达少行的文字，这样更容易阅读。）
+当你想让玩家输入一个整数时，使用`INPUT`。 输入的结果存储在`RESULT`中。
+当你想让玩家输入一个字符串时，使用`INPUTS`。 输入的结果存储在`RESULTS`中。
+
+<div align="right"><a href="#§1 EraMaker之章 Chapter of EraMaker">§</a> <a href="#Emuera 中文文档（第一版）">TOP</a></div>
+
+## §1.3 EraBasic的结构 Structure of EraBasic
+
+> http://cbaku.com/b/erakanon/eramaerc.html
+
+<div align="right"><a href="#§1 EraMaker之章 Chapter of EraMaker">§</a> <a href="#Emuera 中文文档（第一版）">TOP</a></div>
+
+## §1.4 EraBasic变量列表 List of EraBasic variables
+
+> http://cbaku.com/b/erakanon/eramavar.html
+
+<div align="right"><a href="#§1 EraMaker之章 Chapter of EraMaker">§</a> <a href="#Emuera 中文文档（第一版）">TOP</a></div>
+
+# §2 Emuera之章 Chapter of Emuera
+
+<div align="right"><a href="#§1 EraMaker之章 Chapter of EraMaker">§</a> <a href="#Emuera 中文文档（第一版）">TOP</a></div>
+
 ## EraMaker
 
 ### [EraBasic 的结构]()
