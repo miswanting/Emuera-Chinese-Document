@@ -40,13 +40,13 @@
 
 # §1 EraMaker之章 Chapter of EraMaker
 
+单纯地阅读文档有时可能难以理解，建议结合示例项目（指[EraLight](http://cbaku2.sakura.ne.jp/b/eralight/eralight.lzh)），辅助学习。原文每章都有这条注释，下面不再翻译。
+
 <div align="right"><a href="#§1 EraMaker之章 Chapter of EraMaker">§</a> <a href="#Emuera 中文文档（第一版）">TOP</a></div>
 
 ## §1.1 CSV文件格式 CSV file format
 
 > http://cbaku.com/b/erakanon/eramacsv.html
-
-作者注：我觉得光看这个文件的描述，很难了解这个游戏。 如果先玩样板游戏（指EraLight），然后一边看样板游戏的CSV文件，就比较容易理解了。
 
 ### 基本信息
 
@@ -149,7 +149,7 @@ CSV文件包含以下项目：
 
 将游戏的附加信息设置为（字符串）。 此信息将在启动时显示。
 
-##### `最初からいるキャラ`,(数值)：自始至终都有的人物
+##### `最初からいるキャラ`,(数值)：从最初开始就存在的角色
 
 在游戏开始时设置要训练的角色。 (数字)是一个字符号。 例如，1表示Chara01.csv，12表示Chara12.csv。
 
@@ -292,8 +292,6 @@ CSV文件包含以下项目：
 ## §1.2 ERB文件格式 ERB file format
 
 > http://cbaku.com/b/erakanon/eramaerb.html
-
-我觉得光看这个文件的解释是很难让人对游戏有印象的。 如果先玩样板游戏，然后一边看样板游戏的ERB文件，就比较容易理解了。
 
 ### 基本信息
 
@@ -1302,41 +1300,117 @@ RETURN 1
 
 ##### BASE
 
+角色基本参数。`int[int[]]0~99`
+
+在实例游戏中，`BASE:0`代表体力，`BASE:1`代表精力。
+
 ##### MAXBASE
+
+角色基本参数上限。`int[int[]]0~99`
 
 ##### ABL
 
+角色能力。`int[int[]]0~99`
+
+在`ABL.CSV`中注册的能力编号。
+
 ##### TALENT
+
+角色素质。`int[int[]]0~999`
+
+在`TALENT.CSV`中注册的素质编号。
 
 ##### EXP
 
+角色经验。`int[int[]]0~99`
+
+在`EXP.CSV`中注册的经验编号。
+
 ##### MARK
+
+角色刻印。`int[int[]]0~99`
+
+在`MARK.CSV`中注册的刻印编号。
 
 ##### RELATION
 
+角色相性。`int[int[]]0~99`
+
+`RELATION:TARGET:3`指训练中的角色和角色编号为3的角色的相性。而不是注册编号。
+
 ##### JUEL
 
-##### CFLAG
+角色持有的珠。`int[int[]]0~199`
+
+在`PALAM.CSV`中注册的珠编号。
+
+##### CFLAG（Character Flag）
+
+角色标志。`int[int[]]0~999`
+
+角色的各种数据都可保存于此。
+
+`CFLAG:0`为`1`的角色会被认为是特殊角色。
 
 ##### ISASSI
 
+是否为助手。`int[]0~99`
+
+如果为`0`，则不是助手；
+
+如果为`1`，则是助手。
+
+用法：`ISASSI:TARGET`或`ISASSI:ASSI`。
+
 ##### NAME
+
+角色名称。`string[]0~99`
+
+用法：`NAME:TARGET`或`NAME:ASSI`。
 
 ##### CALLNAME
 
+角色称呼。`string[]0~99`
+
+用法：`CALLNAME:TARGET`或`CALLNAME:ASSI`。
+
 ##### TEQUIP
+
+角色装备的物品。`int[int[]]0~99`
+
+可用于判断物品装备情况，也可以用于表现角色强化，或是药剂的使用。
 
 ##### PALAM
 
+角色训练中的参数。`int[int[]]0~99`
+
+在`PALAM.CSV`中注册的刻印编号。
+
 ##### STAIN
+
+角色训练中的污渍。`int[int[]]0~99`
+
+在示例游戏中，`STAIN:0`指口部污渍；`STAIN:1`指手部污渍等。
 
 ##### EX
 
+训练中“攀登过几次顶峰”。`int[int[]]0~99`
+
+在示例游戏中，`EX:0`为C；`EX:1`为V；`EX:2`为A；
+
 ##### SOURCE
+
+执行训练命令源角色。`int[int[]]0~99`
+
+参见示例游戏中`COM××.ERB`和`SOURCE.ERB`可以看到从训练源到训练参数升高的流程。
 
 ##### NOWEX
 
+`int[int[]]0~99`
+
 ##### GOTJUEL
+
+`int[int[]]0~99`
 
 #### 物品数据
 
@@ -1361,6 +1435,8 @@ RETURN 1
 <div align="right"><a href="#§1 EraMaker之章 Chapter of EraMaker">§</a> <a href="#Emuera 中文文档（第一版）">TOP</a></div>
 
 # §2 Emuera之章 Chapter of Emuera
+
+从历史上看，Emuera是对EraMaker引擎的重做。
 
 <div align="right"><a href="#§1 EraMaker之章 Chapter of EraMaker">§</a> <a href="#Emuera 中文文档（第一版）">TOP</a></div>
 
