@@ -35,8 +35,10 @@
   - `era light` → `EraLight`
   - `erakanon` → `EraKanon`
   - `era basic` → `EraBasic`
+- 出于对该游戏引擎使用场景的特殊性的考虑，文档中的一些敏感词语会进行相应的脱敏处理。一些内容意会就好。如“训练”等。
+- 第一版文档脱胎于对日语原文档的翻译，且采用的是意译的路径。也会涉及到大量的对示例代码等内容的改造。因此请不要苛求翻译的精确度。
 
-# §1 EraMaker之章 Chapter of EraMaker 
+# §1 EraMaker之章 Chapter of EraMaker
 
 <div align="right"><a href="#§1 EraMaker之章 Chapter of EraMaker">§</a> <a href="#Emuera 中文文档（第一版）">TOP</a></div>
 
@@ -1288,11 +1290,15 @@ RETURN 1
 
 #### 角色数据
 
-大部分变量是二维数列。如`EXP:1:2`代表第1个角色的第2种经验。
+大部分变量是二维数组。如`EXP:1:2`代表第1个角色的第2种经验。
 
 但有一种缩写，如`EXP:0`，代表`EXP:TARGET:0`，即训练对象的第0种经验。
 
 ##### NO
+
+角色编号。`int[0~99]`
+
+它不是一个二维数组，所以你可以用`NO:TARGET`或`NO:ASSI`来访问它。
 
 ##### BASE
 
