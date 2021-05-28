@@ -652,22 +652,336 @@ ENDIF
 测试7
 ```
 
-用`==`表示 "等于"，用`!=`表示 "不等于"。`>`代表 "左大于右"，`>=`代表 "左不小于右"，`<`代表 "右大于左"，`<=`代表 "右不小于左"。均为半角。
-用`&&`表示“与”，用`||`表示“或”。均为半角。
+布尔运算符：均为半角。
+
+| 字符 |   意义    |
+| :--: | :-------: |
+|  ==  |   等于    |
+|  !=  |  不等于   |
+|  >   |   大于    |
+|  >=  |  不小于   |
+|  <   |   小于    |
+|  <=  |  不大于   |
+|  &&  | 与（AND） |
+| \|\| | 或（OR）  |
+
 可以用括号来判断更复杂的条件。
 
-##### 输入和等待输入
+##### 输入与输入等待
 
 `WAIT`是通过显示句子等待输入时使用的。
-（注：一般情况下，你可以用`PRINTW`来表达少行的文字，这样更容易阅读。）
+（注：一般情况下，你可以用`PRINTW`来表达单行的文字，这样更容易阅读。）
 当你想让玩家输入一个整数时，使用`INPUT`。 输入的结果存储在`RESULT`中。
 当你想让玩家输入一个字符串时，使用`INPUTS`。 输入的结果存储在`RESULTS`中。
+
+如：
+
+```
+PRINT DATA输入开始。
+WAIT
+PRINTL 请输入你的年龄。
+INPUT
+PRINTL 请输入你的名字。
+INPUTS
+PRINTFORML %RESULTS%今年已经{RESULT}岁了。
+```
+
+##### 重复与GOTO
+
+当你想重复触发指令时，可使用`REPEAT`，语句会执行到`REND`处后返回到初始点。重复次数储存在`COUNT`变量中。
+
+注意：`REPEAT`语句不支持嵌套。
+
+如果你在从`REPEAT`到`REND`的途中使用`CONTINUE`，它将回到`REPEAT`的位置；如果你使用`BREAK`，它将停止重复并跳到`REND`的下一行。
+
+如果你想一次性移动到另一个地方，请使用`GOTO`。当你使用`GOTO`时，你需要用$注册一个 "标签"。
+
+如：
+
+```
+REPEAT 10
+    PRINT 你好
+REND
+;使用不带参数的PRINTL用于换行。
+PRINTL
+REPEAT 5
+    PRINTFORML 分数：{COUNT*5}
+REND
+
+MONEY = 300
+REPEAT 5
+    SIF MONEY <= COUNT*100
+        BREAK
+    PRINTFORML 金额比{COUNT*100}元更多。
+REND
+REPEAT 5
+    SIF MONEY == COUNT*100
+        CONTINUE
+    PRINTFORML 金额不是{COUNT*100}元。
+REND
+
+$INPUT_LOOP
+PRINTL 请输入0-9的整数。
+INPUT
+SIF RESULT < 0 || RESULT > 9
+   GOTO INPUT_LOOP
+PRINTFORML 输入的数字为{RESULT}。
+```
+
+输出：
+
+```
+你好你好你好你好你好你好你好你好你好你好
+分数：0
+分数：5
+分数：10
+分数：15
+分数：20
+金额比0元更多。
+金额比100元更多。
+金额比200元更多。
+金额不是0元。
+金额不是100元。
+金额不是200元。
+金额不是400元。
+请输入0-9的整数。
+-1 【故意手动输入过小的整数。】
+请输入0-9的整数。
+10 【故意手动输入过大的整数。】
+请输入0-9的整数。
+3 【按要求手动输入。】
+输入的数字为3。
+```
+
+##### 关于函数
+
+一个大型的程序，如果执意要连续不断一气呵成写到最后，而不分为各个部分的话，写出来的程序是很糟糕的。维护难度很大。如果把程序合理的分为不同的部分，可以使程序更加容易被理解。
+
+我们可以通过“函数”来实现代码的分割。
+
+函数本身分为“注册”和“调用”两个部分，注册时需要使用`@`，`@`之后紧跟函数的名称。合法的函数名称是由字母与下划线构成的，且均为半角。
+
+游戏启动时最先调用的函数名为`EVENTFIRST`，我们将在后文进行详细介绍。
+
+若想**跳转**到某个函数（不返回），请使用`JUMP`。
+
+若想**调用**某个函数（执行完后返回），请使用`CALL`。
+
+使用`CALL`语句调用的函数在执行到`RETURN`语句后可以返回原函数，`RETURN`语句的参数会被保存在`RESULT`变量中。若函数执行结束而没有执行`RETURN`时，`RESULT`变量中的值为`0`。
+
+若使用`RESTART`语句，当前函数将会冲从头重新开始执行。
+
+如：
+
+```
+@EVENTFIRST
+PRINTW 游戏开始。
+
+CALL OPENING
+PRINTFORMW 开局函数执行的结果为{RESULT}。
+CALL GAME_MAIN
+PRINTFORMW 游戏的结果为{RESULT}。
+JUMP ENDING
+
+PRINTL 由于上面跳转到ENDING函数，所以本行不执行。
+
+@OPENING
+PRINTW 这是开局函数。
+RETURN 25
+
+@GAME_MAIN
+PRINTW 这是游戏主函数。
+PRINTL 函数内语句运行完毕且不显式执行RETURN语句。
+
+@ENDING
+PRINTW 游戏结束。
+RESTART
+```
+
+输出：
+
+```
+游戏开始。
+这是开局函数。
+开局函数执行的结果为25。
+这是游戏主函数。
+函数内语句运行完毕且不显式执行RETURN语句。
+游戏的结果为0。
+游戏结束。
+游戏结束。
+游戏结束。
+…… 【无限循环】
+```
+
+##### 其他基本命令
+
+`QUIT`：退出游戏；
+
+`DRAWLINE`：用`--`画一条从左至右的分割线；
+
+`TIMES`：支持小数的乘法运算（否则EraMaker会对小数自动取整）。
+
+`BAR`：在屏幕上绘制一个类似于`[*****.....]`的控件，用法为：`BAR [变量] [最大值] [控件长度]`。
+
+如：
+
+```
+MONEY = 500
+DRAWLINE
+BARL MONEY , 1000 , 20
+PRINTFORMW 我有{MONEY}元钱。
+DRAWLINE
+TIMES MONEY , 1.25
+BARL MONEY , 1000 , 20
+PRINTFORMW 我有{MONEY}元钱，游戏结束。
+QUIT
+```
+
+输出：
+
+```
+------------------------------
+[**********..........]
+我有500元钱。
+------------------------------
+[************........]
+我有625元钱，游戏结束。
+```
+
+#### 关于命令（训练用）
+
+EraMaker有一些训练专用的特殊命令。
+
+##### 显示训练专用的数据
+
+`PRINT_ABL`：显示角色的能力；
+
+`PRINT_TALENT`：显示角色的素质；
+
+`PRINT_MARK`：显示角色的刻印；
+
+`PRINT_EXP`：显示角色的经验；
+
+`PRINT_PALAM`：显示角色训练中的参数；
+
+使用以上的命令时，请指定需要显示的角色，如`PRINT_ABL 0`一般标识显示主角的能力。
+
+`PRINT_ITEM`：显示持有的物品；
+
+`PRINT_SHOPITEM`：显示商店中的物品；
+
+`UPCHECK`：显示训练命令在训练期间参数的变化。
+
+##### 角色管理
+
+`ADDCHARA`：新增一个角色。如果需要添加一个编号为3的角色，`ADDCHARA 3`。
+
+`ADDSPCHARA`：新增一个SP角色。如果需要添加一个编号为3的角色，`ADDSPCHARA 3`。（SP角色是指角色编号为0或1的角色。）
+
+`DELCHARA`：删除一个由`ADDCHARA`或其他方法添加的角色。
+
+如：
+
+```
+;编号为0的角色为名为小明的主人公
+;编号为3的角色名字是小红、5的角色名字是小刚、6的角色名字是小垃圾
+PRINTFORML 当前共有{CHARANUM}名角色。
+ADDCHARA 3
+ADDCHARA 5
+ADDCHARA 6
+PRINTFORML 当前共有{CHARANUM}名角色。
+REPEAT CHARANUM
+    PRINTFORML 第{COUNT}号为%NAME:COUNT%。
+REND
+DELCHARA 2
+PRINTFORML 当前共有{CHARANUM}名角色。
+REPEAT CHARANUM
+    PRINTFORML 第{COUNT}号为%NAME:COUNT%。
+REND
+```
+
+输出：
+
+```
+当前共有1名角色。
+当前共有4名角色。
+第0号为小明。
+第1号为小红。
+第2号为小刚。
+第3号为小垃圾。
+当前共有3名角色。
+第0号为小明。
+第1号为小红。
+第2号为小垃圾。
+```
+
+##### 存档相关
+
+`SAVEGAME`：呼出保存存档界面；
+
+`LOADGAME`：呼出加载存档界面；
+
+上面两条命令都只能在`SHOP`中调用。
+
+`PUTFORM`只能与一个名为`@SAVEINFO`的特殊函数一起使用，它可以用与PRINTFORM类似的格式来写出你的存档的概况。如该存档已经过去了多少天，角色的能力是什么，以及正在训练哪个角色等。
+
+##### BEGIN
+
+`BEGIN`可以通过调用各种系统指令来推进游戏。
+
+正在执行的函数在调用`BEGIN`函数后会被终止，即使`BEGIN`函数从其他地方被`CALL`语句调用，它也不会返回到原来的函数。
+
+`BEGIN TRAIN`：开始训练；
+
+`BEGIN AFTERTRAIN`：结束训练；
+
+`BEGIN ABLUP`：呼出升级界面；
+
+`BEGIN TURNEND`：结束回合；
+
+`BEGIN SHOP`：呼出SHOP界面；
 
 <div align="right"><a href="#§1 EraMaker之章 Chapter of EraMaker">§</a> <a href="#Emuera 中文文档（第一版）">TOP</a></div>
 
 ## §1.3 EraBasic的结构 Structure of EraBasic
 
 > http://cbaku.com/b/erakanon/eramaerc.html
+
+### 基本信息
+
+#### EraMaker的启动
+
+游戏启动后，会出现标题屏幕，你可以选择“从头开始”或“加载存档”。当你选择“从头开始”时，ERB文件中的`EVENTFIRST`函数会被调用。
+
+当`EVENTFIRST`完全执行完毕后，游戏便会结束。因此，通过`BEGIN`调用`SHOP`或`TRAIN`很有必要的。
+
+> 此处可参见示例游戏的`SYSTEM.ERB`的开头部分。
+
+#### SHOP
+
+##### 进入SHOP流程
+
+进入SHOP流程后，`@EVENTSHOP`函数（如果有的话）将被调用。这是一个事件函数。
+
+之后，`@SHOW_SHOP`函数将会被调用。可以在此函数中显示一些基本信息，如日期和训练中的角色等。调用`PRINT_SHOPITEM`显示出售中的物品，或是显示一些特殊的选项，如保存和加载等。
+
+##### 在SHOP流程中选择命令
+
+如果选择的数字位于0-99，则意味着购买物品。
+
+如果选择任何其他数字，将调用函数`@USERSHOP`，所选择的数字被储存在`RESULT`变量中，等待进行后续的处理。
+
+> 此处可参见实例游戏中的`SHOP.ERB`文件部分，方便理解。
+
+##### 购买
+
+当你购买物品时，函数`@EVENTBUY`将会被调用（如果有的话）。这是一个事件函数。（如果你想把已购买的物品从商店的品种中删除，使用这个功能是个好主意。）
+
+#### TRAIN
+
+##### 进入TRAIN流程
+
+
 
 <div align="right"><a href="#§1 EraMaker之章 Chapter of EraMaker">§</a> <a href="#Emuera 中文文档（第一版）">TOP</a></div>
 
