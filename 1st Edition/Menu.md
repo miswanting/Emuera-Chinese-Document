@@ -3,7 +3,7 @@
 <h3 align='center'>目录</h3>
 
 - [§0]() 文档说明
-- [§1](#§1 EraMaker之章 Chapter of EraMaker) EraMaker之章 `Chapter of EraMaker`
+- [§1](#1-eraMaker之章-chapter-of-eramaker) EraMaker之章 `Chapter of EraMaker`
   - [§1.1]() CSV文件格式 `CSV file format` [CSVファイル書式](http://cbaku.com/b/erakanon/eramacsv.html)
   - [§1.2]() ERB文件格式 `ERB file format` [ERBファイル書式](http://cbaku.com/b/erakanon/eramaerb.html)
   - [§1.3]() EraBasic的结构 `Structure of EraBasic` [era basicの構造](http://cbaku.com/b/erakanon/eramaerc.html)
