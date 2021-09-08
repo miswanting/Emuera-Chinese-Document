@@ -29,10 +29,10 @@ footer: GPL-3.0+ Licensed | Copyright © 2021-Present Miswanting：：
 ## 第一步：翻译部分
 
 1. EraMaker 部分
-   - :green_circle:`直译`[CSV 文件格式](/translation/CSV_File_Format)
-   - :yellow_circle:`直译`[ERB 文件格式](/translation/ERB_File_Format)
-   - :black_circle:`直译`[EraBasic 的结构]()
-   - :black_circle:`直译`[EraBasic 的变量]()
+   - :green_circle:`直译`[CSV 文件格式](translation/CSV_File_Format)
+   - :green_circle:`直译`[ERB 文件格式](translation/ERB_File_Format)
+   - :green_circle:`直译`[EraBasic 的结构](translation/EraBasic_Structure)
+   - :yellow_circle:`直译`[EraBasic 的变量](translation/EraBasic_Variables)
 2. Emuera 部分
    - :black_circle:`直译`[术语表]()
    - :black_circle:`直译`[调试命令]()

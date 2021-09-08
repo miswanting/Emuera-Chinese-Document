@@ -4,8 +4,8 @@
 
 1. [CSV 文件格式(CSV_file_format)](CSV_File_Format)
 2. [ERB 文件格式(ERB_file_format)](ERB_File_Format)
-3. [EraBasic 的结构(Structure of EraBasic)]()
-4. [EraBasic 的变量(Variables of EraBasic)]()
+3. [EraBasic 的结构(Structure of EraBasic)](EraBasic_Structure)
+4. [EraBasic 的变量(Variables of EraBasic)](EraBasic_Variables)
 
 ## Emuera 部分
 
