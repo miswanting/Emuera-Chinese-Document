@@ -3,19 +3,279 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Eramaker 的 CSV 文件格式 | Emuera 中文文档</title>
+    <title>Eramaker 的 ERB 文件格式 | Emuera 中文文档</title>
     <meta name="description" content="Emuera 中文文档">
     <link rel="stylesheet" href="/Emuera-Chinese-Document/assets/style.cac40d77.css">
-    <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/Home.c81fb750.js">
-    <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/app.bcba0c23.js">
-    <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/translation_ERB_File_Format.md.1c275c32.lean.js">
-    <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/app.bcba0c23.js">
-    <meta name="twitter:title" content="Eramaker 的 CSV 文件格式 | Emuera 中文文档">
-    <meta property="og:title" content="Eramaker 的 CSV 文件格式 | Emuera 中文文档">
+    <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/Home.76da6700.js">
+    <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/app.c45c263d.js">
+    <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/translation_ERB_File_Format.md.a1717744.lean.js">
+    <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/app.c45c263d.js">
+    <meta name="twitter:title" content="Eramaker 的 ERB 文件格式 | Emuera 中文文档">
+    <meta property="og:title" content="Eramaker 的 ERB 文件格式 | Emuera 中文文档">
   </head>
   <body>
-    <div id="app"><!--[--><div class="theme"><header class="nav-bar" data-v-675d8756><div class="sidebar-button" data-v-675d8756><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div><a class="nav-bar-title" href="/Emuera-Chinese-Document/" aria-label="Emuera 中文文档, back to home" data-v-675d8756 data-v-4a583abe><!----> Emuera 中文文档</a><div class="flex-grow" data-v-675d8756></div><div class="nav" data-v-675d8756><nav class="nav-links" data-v-675d8756 data-v-eab3edfe><!--[--><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/guide/" data-v-b8818f8c>指南 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/reference/" data-v-b8818f8c>参考 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/translation/" data-v-b8818f8c>翻译 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/development/" data-v-b8818f8c>开发 <!----></a></div></div><!--]--><!----><!----></nav></div><!--[--><!--]--></header><aside class="sidebar" data-v-83e92a68><nav class="nav-links nav" data-v-83e92a68 data-v-eab3edfe><!--[--><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/guide/" data-v-b8818f8c>指南 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/reference/" data-v-b8818f8c>参考 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/translation/" data-v-b8818f8c>翻译 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/development/" data-v-b8818f8c>开发 <!----></a></div></div><!--]--><!----><!----></nav><!--[--><!--]--><!----><!--[--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main class="page" data-v-7eddb2c4><div class="container" data-v-7eddb2c4><!--[--><!--]--><div style="position:relative;" class="content" data-v-7eddb2c4><div><h1 id="eramaker-的-csv-文件格式" tabindex="-1">Eramaker 的 CSV 文件格式 <a class="header-anchor" href="#eramaker-的-csv-文件格式" aria-hidden="true">#</a></h1><blockquote><p>翻译自原文档：<a href="http://cbaku.com/b/erakanon/eramaerb.html" target="_blank" rel="noopener noreferrer">http://cbaku.com/b/erakanon/eramaerb.html</a></p></blockquote></div></div><footer class="page-footer" data-v-7eddb2c4 data-v-fb8d84c6><div class="edit" data-v-fb8d84c6><div class="edit-link" data-v-fb8d84c6 data-v-1ed99556><!----></div></div><div class="updated" data-v-fb8d84c6><!----></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
-    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"75a142c3\",\"guide_command documentation.md\":\"e2da151f\",\"guide_language specification.md\":\"72273884\",\"guide_menu.md\":\"351aad69\",\"guide_quick start.md\":\"47fb9337\",\"guide_tutorial.md\":\"c3e20098\",\"guide_index.md\":\"d1b181ea\",\"reference_emuera code analyze.md\":\"b244ad82\",\"reference_emuera manual.md\":\"5c29ee9d\",\"reference_era series history.md\":\"41c8ba3d\",\"reference_erabasic api reference.md\":\"eb4915e3\",\"reference_erabasic manual.md\":\"ab187c83\",\"reference_erabasic quick start.md\":\"1a867c2a\",\"reference_erabasic tutorial.md\":\"b3985a42\",\"reference_eramaker basic manual.md\":\"bf55656d\",\"reference_eramaker manual.md\":\"d97d2950\",\"reference_menu.md\":\"ab03a067\",\"reference_player manual.md\":\"6b9ee87f\",\"reference_index.md\":\"3d77d0e5\",\"translation_csv_file_format.md\":\"9e36a7a0\",\"translation_erb_file_format.md\":\"1c275c32\",\"translation_index.md\":\"a357901f\"}")</script>
-    <script type="module" async src="/Emuera-Chinese-Document/assets/app.bcba0c23.js"></script>
+    <div id="app"><!--[--><div class="theme"><header class="nav-bar" data-v-675d8756><div class="sidebar-button" data-v-675d8756><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div><a class="nav-bar-title" href="/Emuera-Chinese-Document/" aria-label="Emuera 中文文档, back to home" data-v-675d8756 data-v-4a583abe><!----> Emuera 中文文档</a><div class="flex-grow" data-v-675d8756></div><div class="nav" data-v-675d8756><nav class="nav-links" data-v-675d8756 data-v-eab3edfe><!--[--><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/guide/" data-v-b8818f8c>指南 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/reference/" data-v-b8818f8c>参考 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/translation/" data-v-b8818f8c>翻译 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/development/" data-v-b8818f8c>开发 <!----></a></div></div><!--]--><!----><!----></nav></div><!--[--><!--]--></header><aside class="sidebar" data-v-83e92a68><nav class="nav-links nav" data-v-83e92a68 data-v-eab3edfe><!--[--><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/guide/" data-v-b8818f8c>指南 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/reference/" data-v-b8818f8c>参考 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/translation/" data-v-b8818f8c>翻译 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/Emuera-Chinese-Document/development/" data-v-b8818f8c>开发 <!----></a></div></div><!--]--><!----><!----></nav><!--[--><!--]--><ul class="sidebar-links" data-v-83e92a68><!--[--><li class="sidebar-link"><a class="sidebar-link-item" href="#基本信息">基本信息</a><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="#关于-erb-文件">关于 ERB 文件</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#如何编写erb文件">如何编写ERB文件</a><!----></li></ul></li><li class="sidebar-link"><a class="sidebar-link-item" href="#变量与命令">变量与命令</a><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="#关于变量">关于变量</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#变量的赋值">变量的赋值</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#关于数组">关于数组</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#关于二维数组">关于二维数组</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#打印变量至屏幕">打印变量至屏幕</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#关于字符串变量">关于字符串变量</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#关于命令（基本）">关于命令（基本）</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#如何编写命令">如何编写命令</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#显示文字">显示文字</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#条件判断">条件判断</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#输入与输入等待">输入与输入等待</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#重复与goto">重复与GOTO</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#关于函数">关于函数</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#其他基本命令">其他基本命令</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#关于命令（训练）">关于命令（~~训练~~）</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#角色管理">角色管理</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#存档相关">存档相关</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#关于begin">关于BEGIN</a><!----></li></ul></li><!--]--></ul><!--[--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main class="page" data-v-7eddb2c4><div class="container" data-v-7eddb2c4><!--[--><!--]--><div style="position:relative;" class="content" data-v-7eddb2c4><div><h1 id="eramaker-的-erb-文件格式" tabindex="-1">Eramaker 的 ERB 文件格式 <a class="header-anchor" href="#eramaker-的-erb-文件格式" aria-hidden="true">#</a></h1><blockquote><p>翻译自原文档：<a href="http://cbaku.com/b/erakanon/eramaerb.html" target="_blank" rel="noopener noreferrer">http://cbaku.com/b/erakanon/eramaerb.html</a></p></blockquote><h2 id="基本信息" tabindex="-1">基本信息 <a class="header-anchor" href="#基本信息" aria-hidden="true">#</a></h2><h3 id="关于-erb-文件" tabindex="-1">关于 ERB 文件 <a class="header-anchor" href="#关于-erb-文件" aria-hidden="true">#</a></h3><p><code>ERB文件</code>，即文件名满足<code>*.erb</code>格式的文件。其中，<code>ERB</code>是 <u>Er</u>a <u>B</u>asic 的缩写，即 Era 脚本。</p><p>在<code>eramaker.exe</code>旁新建一个名为<code>ERB</code>的文件夹，并将<code>ERB文件</code>放入该文件夹中。</p><p>可用记事本等文本/代码编辑器进行编辑。</p><h3 id="如何编写erb文件" tabindex="-1">如何编写ERB文件 <a class="header-anchor" href="#如何编写erb文件" aria-hidden="true">#</a></h3><h4 id="注释和空格" tabindex="-1">注释和空格 <a class="header-anchor" href="#注释和空格" aria-hidden="true">#</a></h4><p>对于所有 ERB 文件：</p><ul><li>如果每行的第一个非空字符是半角分号<code>;</code>，则该行为注释，在程序执行时，该行会被忽略。</li><li>空白行也会被程序忽略。</li><li>不支持行尾注释。</li></ul><div class="tip custom-block"><p class="custom-block-title">正确</p><div class="language-sh"><pre><code>;资金设置
+MONEY = 500
+    ;时间设置
+    DAY = 10
+    TIME = 1
+;开始游戏
+PRINT 做什么？
+</code></pre></div></div><div class="warning custom-block"><p class="custom-block-title">错误</p><div class="language-sh"><pre><code>MONEY = 500;
+TIME = 5;（从第5天开始）
+</code></pre></div></div><h4 id="半角输入" tabindex="-1">半角输入 <a class="header-anchor" href="#半角输入" aria-hidden="true">#</a></h4><p>输入数字、指令、变量名、函数名等时，请使用半角字符。</p><div class="tip custom-block"><p class="custom-block-title">正确</p><div class="language-sh"><pre><code>MONEY = 500
+PRINT 开始游戏。
+</code></pre></div></div><div class="warning custom-block"><p class="custom-block-title">错误</p><div class="language-sh"><pre><code>ＭＯＮＥＹ　＝　５００
+ＰＲＩＮＴ 开始游戏。
+</code></pre></div></div><h4 id="字符串输入" tabindex="-1">字符串输入 <a class="header-anchor" href="#字符串输入" aria-hidden="true">#</a></h4><p>如果你用<code>&quot;&quot;</code>包住字符串，它将无法正常工作。</p><div class="tip custom-block"><p class="custom-block-title">正确</p><div class="language-sh"><pre><code>PRINT 这一天结束了……
+</code></pre></div></div><div class="warning custom-block"><p class="custom-block-title">错误</p><div class="language-sh"><pre><code>PRINT &quot;这一天结束了……&quot;
+</code></pre></div></div><h4 id="一行的完结" tabindex="-1">一行的完结 <a class="header-anchor" href="#一行的完结" aria-hidden="true">#</a></h4><p>即使在写长指令时，也不要把指令分成两行以上。</p><div class="tip custom-block"><p class="custom-block-title">正确</p><div class="language-sh"><pre><code>PRINT Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+</code></pre></div></div><div class="warning custom-block"><p class="custom-block-title">错误</p><div class="language-sh"><pre><code>PRINT Lorem ipsum dolor sit amet,
+consectetur adipiscing elit,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</code></pre></div></div><h2 id="变量与命令" tabindex="-1">变量与命令 <a class="header-anchor" href="#变量与命令" aria-hidden="true">#</a></h2><h3 id="关于变量" tabindex="-1">关于变量 <a class="header-anchor" href="#关于变量" aria-hidden="true">#</a></h3><p>在游戏设计中，对数据的操作至关重要。 因此，你必须学会使用<code>变量</code>，它可以存储数据，并用于进行加法和乘法等计算。</p><h3 id="变量的赋值" tabindex="-1">变量的赋值 <a class="header-anchor" href="#变量的赋值" aria-hidden="true">#</a></h3><h4 id="直接赋值" tabindex="-1">直接赋值 <a class="header-anchor" href="#直接赋值" aria-hidden="true">#</a></h4><p>变量的赋值需要使用运算符半角等号<code>=</code>。</p><p>在<code>=</code>符号的前后用空格或<s>制表符</s>隔开。【译者：请使用空格】</p><p>EraMaker中可以使用的数字基本都是整数。 不要输入小数。</p><div class="tip custom-block"><p class="custom-block-title">正确</p><div class="language-sh"><pre><code>MONEY = 500
+</code></pre></div></div><div class="warning custom-block"><p class="custom-block-title">错误</p><div class="language-sh"><pre><code>MONEY ＝ 500
+MONEY=500
+MONEY = 3.14
+</code></pre></div></div><h4 id="计算结果赋值" tabindex="-1">计算结果赋值 <a class="header-anchor" href="#计算结果赋值" aria-hidden="true">#</a></h4><p><code>*</code>是乘法，<code>/</code>是除法，<code>%</code>是求余。</p><p>当计算结果是小数时，会被四舍五入。</p><div class="tip custom-block"><p class="custom-block-title">正确</p><div class="language-sh"><pre><code>;MONEY的值为74
+MONEY = 15+34+25
+;MONEY的值为650
+MONEY = 150+(100-50)*10
+;MONEY的值为3
+MONEY = 10/3
+;MONEY的值为TIME的10倍
+MONEY = TIME*10
+;若DAY为0,1,2……则MONEY为0,10,20……超过7时，返回到0。
+MONEY = DAY%7*10
+</code></pre></div></div><div class="warning custom-block"><p class="custom-block-title">错误</p><div class="language-sh"><pre><code>MONEY = 500×10÷4
+</code></pre></div></div><p>使用<code>+=</code>，<code>-=</code>，<code>*=</code>，<code>/=</code>和<code>%=</code>。</p><div class="tip custom-block"><p class="custom-block-title">示例</p><div class="language-sh"><pre><code>MONEY = 100
+TIME = 12
+;MONEY的值为150
+MONEY += 50
+;MONEY的值为750
+MONEY *= 7-2
+;MONEY的值为80
+MONEY -= 670
+;MONEY的值为8
+MONEY %= TIME
+;MONEY的值为1
+MONEY /= TIME-4
+</code></pre></div></div><h3 id="关于数组" tabindex="-1">关于数组 <a class="header-anchor" href="#关于数组" aria-hidden="true">#</a></h3><p>变量也可以是一个<code>数组</code>。<code>数组</code>是一种可以用来管理两个或两个以上同名变量的数据。</p><p>对数组的访问请使用半角冒号<code>:</code>。前后不要留空格。</p><p>结构如下：</p><div class="language-"><pre><code>&lt;数组名&gt;:&lt;索引&gt;
+</code></pre></div><ul><li>索引可以是整数，最小为0，最大值由数组本身最大值决定。</li><li>索引可以是变量，但该变量的值只能为整数，而不能是一个数组。</li></ul><div class="tip custom-block"><p class="custom-block-title">正确</p><div class="language-sh"><pre><code>A = 35
+;为数组FLAG赋值
+FLAG:0 = 0
+FLAG:2 = 10
+FLAG:35 = 440
+;用数组FLAG进行计算
+FLAG:A += 100/FLAG:2
+FLAG:2 *= FLAG:A
+</code></pre></div></div><div class="warning custom-block"><p class="custom-block-title">错误</p><div class="language-sh"><pre><code>FLAG：0 = 10
+FLAG : 52 = 1000
+FLAG:FLAG:20 = 10000
+FLAG:91881816 = 1
+</code></pre></div></div><h3 id="关于二维数组" tabindex="-1">关于二维数组 <a class="header-anchor" href="#关于二维数组" aria-hidden="true">#</a></h3><p>二维数组也是变量的一种，比较特殊。可以使用两个冒号来访问。</p><p>结构为：</p><div class="language-"><pre><code>&lt;数组名&gt;:&lt;角色编号&gt;:&lt;索引&gt;
+</code></pre></div><p>示例：</p><div class="language-sh"><pre><code>A = 2 ;让第5个角色的第0种能力升到3级。
+ABL:5:0 = 3
+;让第A个(第2个)角色的第1种经验+2。
+EXP:A:1 += 2
+</code></pre></div><p>:::</p><h3 id="打印变量至屏幕" tabindex="-1">打印变量至屏幕 <a class="header-anchor" href="#打印变量至屏幕" aria-hidden="true">#</a></h3><p>最简单的方法是使用<code>PRINTV</code>和<code>PRINTVL</code>命令。 后面会详细讨论。</p><p>如：</p><div class="language-"><pre><code>A = 2
+PRINTV A
+A = 30
+PRINTVL A
+B = 400
+PRINTVL B
+</code></pre></div><p>输出：</p><div class="language-"><pre><code>230
+400
+</code></pre></div><h3 id="关于字符串变量" tabindex="-1">关于字符串变量 <a class="header-anchor" href="#关于字符串变量" aria-hidden="true">#</a></h3><p>普通变量只能处理整数，但也有字符串变量可以处理字符串。 但功能有限。</p><p>在屏幕上显示字符串变量时，使用<code>PRINTS</code>或<code>PRINTSL</code>命令。</p><div class="tip custom-block"><p class="custom-block-title">正确</p><div class="language-sh"><pre><code>STR:0 = 测试文字
+PRINTSL STR:0
+</code></pre></div></div><div class="warning custom-block"><p class="custom-block-title">错误</p><div class="language-sh"><pre><code>;无法对字符串变量使用+=
+STR:0 += 测试文字
+</code></pre></div></div><h4 id="变量列表" tabindex="-1">变量列表 <a class="header-anchor" href="#变量列表" aria-hidden="true">#</a></h4><p>参考<a href="./.html">此处</a>。</p><h3 id="关于命令（基本）" tabindex="-1">关于命令（基本） <a class="header-anchor" href="#关于命令（基本）" aria-hidden="true">#</a></h3><p>命令可用于在屏幕上显示文本、进行条件判断等。</p><h3 id="如何编写命令" tabindex="-1">如何编写命令 <a class="header-anchor" href="#如何编写命令" aria-hidden="true">#</a></h3><p>基本的使用方式为：</p><div class="language-"><pre><code>&lt;命令名&gt; &lt;命令内容&gt;
+</code></pre></div><p>命令名与命令内容之间请用半角空格或制表符分开。【译者注：请用半角空格】</p><p>对于不需要命令内容的命令，可直接换行。</p><div class="tip custom-block"><p class="custom-block-title">正确</p><div class="language-sh"><pre><code>PRINT 这是一个测试。
+SIF 3 == 1+2
+    PRINT 这很明显。
+WAIT
+</code></pre></div></div><div class="warning custom-block"><p class="custom-block-title">错误</p><div class="language-sh"><pre><code>PRINT这是一个测试。
+;等待输入
+WAIT 0
+</code></pre></div></div><h3 id="显示文字" tabindex="-1">显示文字 <a class="header-anchor" href="#显示文字" aria-hidden="true">#</a></h3><ul><li><code>PRINT</code>是显示一个字符的命令，<code>PRINTL</code>显示一个字符并新建一行。</li><li><code>PRINTVW</code>显示变量的内容并等待输入。</li><li><code>PRINTVW</code>显示变量的内容并等待输入。</li><li><code>PRINTFORM</code>可以显示字符、变量、字符串变量等的组合，<code>PRINTFORML</code>做的和换行一样，<code>PRINTFORMW</code>做的和等待输入一样。</li><li><code>PRINTFORMS</code>将字符串变量的内容和<code>PRINTFORM</code>一样转换，并显示出来，<code>PRINTFORMSL</code>也是如此，还有换行，<code>PRINTFORMSW</code>也是如此，并等待输入。</li><li><code>PRINTFORMSW</code>做同样的工作，等待输入；<code>PRINTFORMSL</code>做同样的工作，等待输入；</li><li><code>PRINTFORMSW</code>做同样的工作，等待输入；<code>PRINTFORMSL</code>做同样的工作，等待输入。</li></ul><p>示例：</p><div class="language-"><pre><code>MONEY = 500
+NAME:0 = 佐藤
+PRINT 存款有
+PRINTV MONEY
+PRINTL 元。
+PRINT 我的名字叫
+PRINTS NAME:0
+PRINTL 。
+PRINTFORML 重复一遍，我的名字叫%NAME:0%，我的存款有{MONEY}元。
+PRINTFORMW 如果存款加上1000日元，后支付600日元，剩下的就是{MONEY+1000-600}元。
+STR:0 = 将这些钱乘以5，就得到{(MONEY+1000-600)*5}元。
+PRINTFORMSW STR:0
+</code></pre></div><p>输出：</p><div class="language-"><pre><code>存款有500元。
+我的名字叫佐藤。
+重复一遍，我的名字叫佐藤，我的存款有500元。
+如果得到1000日元，支付600元，剩下的就是900元。
+将这些钱乘以5，就得到4500元。
+</code></pre></div><h3 id="条件判断" tabindex="-1">条件判断 <a class="header-anchor" href="#条件判断" aria-hidden="true">#</a></h3><p>如果条件表达式不是0，则<code>SIF</code>执行下一行。</p><p>如果条件表达式不为0（有效时），<code>SIF</code>执行下一行。 0（无效时），跳过下一行。</p><p>如果条件表达式不是0，则执行下一行，直到达到<code>ELSE</code>、<code>ELSEIF</code>和<code>ENDIF</code>。 如果是0，则跳过<code>ELSE</code>、<code>ELSEIF</code>和<code>ENDIF</code>；如果是0，则跳过<code>ELSE</code>、<code>ELSEIF</code>和<code>ENDIF</code>；如果是<code>ELSE</code>，则从下一行开始执行，直到到达<code>ENDIF</code>；如果是<code>ELSEIF</code>，则从下一行开始执行，直到到达<code>ELSE</code>、<code>ELSEIF</code>或<code>ENDIF</code>。 如果条件表达式是<code>ELSEIF</code>，则从下一行开始执行，直到到达<code>ELSE</code>、<code>ELSEIF</code>或<code>ENDIF</code>为止；否则，它将跳过，直到到达<code>ELSE</code>、<code>ELSEIF</code>或<code>ENDIF</code>为止，并重复该过程。</p><p>示例：</p><div class="language-"><pre><code>A = 1
+B = 2
+C = 4
+
+SIF A == 1
+    PRINTL 测试1
+SIF B != 1
+    PRINTL 测试2
+SIF C &lt; 5
+    PRINTL 测试3
+IF A+B &gt; 2
+    IF C &gt;= 6
+        PRINTL 测试4
+    ELSE
+        PRINTL 测试5
+    ENDIF
+    IF A == 1 &amp;&amp; B == 3
+        PRINTL 测试6
+    ELSEIF A == 1 || B == 3
+        PRINTL 测试7
+    ELSEIF A &gt; 1 || (B &gt; 2 &amp;&amp; C &gt; 2)
+        PRINTL 测试8
+    ENDIF
+ELSEIF A+B == 2
+    PRINTL 测试9
+ELSE
+    PRINTL 测试10
+ENDIF
+</code></pre></div><p>输出：</p><div class="language-"><pre><code>测试1
+测试2
+测试3
+测试5
+测试7
+</code></pre></div><h4 id="布尔运算符" tabindex="-1">布尔运算符 <a class="header-anchor" href="#布尔运算符" aria-hidden="true">#</a></h4><table><thead><tr><th style="text-align:center;">字符</th><th style="text-align:center;">意义</th></tr></thead><tbody><tr><td style="text-align:center;">==</td><td style="text-align:center;">等于</td></tr><tr><td style="text-align:center;">!=</td><td style="text-align:center;">不等于</td></tr><tr><td style="text-align:center;">&gt;</td><td style="text-align:center;">大于</td></tr><tr><td style="text-align:center;">&gt;=</td><td style="text-align:center;">不小于</td></tr><tr><td style="text-align:center;">&lt;</td><td style="text-align:center;">小于</td></tr><tr><td style="text-align:center;">&lt;=</td><td style="text-align:center;">不大于</td></tr><tr><td style="text-align:center;">&amp;&amp;</td><td style="text-align:center;">与（AND）</td></tr><tr><td style="text-align:center;">||</td><td style="text-align:center;">或（OR）</td></tr></tbody></table><p>可以利用括号来判断更复杂的条件。</p><h3 id="输入与输入等待" tabindex="-1">输入与输入等待 <a class="header-anchor" href="#输入与输入等待" aria-hidden="true">#</a></h3><p><code>WAIT</code>是通过显示句子等待输入时使用的。</p><p>（注：一般情况下，你可以用<code>PRINTW</code>来表达单行出现的文字，这样更容易阅读。）</p><p>当你想让玩家输入一个整数时，使用<code>INPUT</code>。 输入的结果存储在<code>RESULT</code>中。</p><p>当你想让玩家输入一个字符串时，使用<code>INPUTS</code>。 输入的结果存储在<code>RESULTS</code>中。</p><p>示例：</p><div class="language-"><pre><code>PRINT DATA输入开始。
+WAIT
+PRINTL 请输入你的年龄。
+INPUT
+PRINTL 请输入你的名字。
+INPUTS
+PRINTFORML %RESULTS%今年已经{RESULT}岁了。
+</code></pre></div><h3 id="重复与goto" tabindex="-1">重复与GOTO <a class="header-anchor" href="#重复与goto" aria-hidden="true">#</a></h3><p>当你想重复触发指令时，可使用<code>REPEAT</code>，语句会执行到<code>REND</code>处后返回到初始点。重复次数储存在<code>COUNT</code>变量中。</p><p>注意：<code>REPEAT</code>语句不支持嵌套。</p><p>如果你在从<code>REPEAT</code>到<code>REND</code>的途中使用<code>CONTINUE</code>，它将回到<code>REPEAT</code>的位置；如果你使用<code>BREAK</code>，它将停止重复并跳到<code>REND</code>的下一行。</p><p>如果你想一次性移动到另一个地方，请使用<code>GOTO</code>。当你使用<code>GOTO</code>时，你需要用$注册一个 &quot;标签&quot;。</p><p>示例：</p><div class="language-"><pre><code>REPEAT 10
+    PRINT 你好
+REND
+;使用不带参数的PRINTL用于换行。
+PRINTL
+REPEAT 5
+    PRINTFORML 分数：{COUNT*5}
+REND
+
+MONEY = 300
+REPEAT 5
+    SIF MONEY &lt;= COUNT*100
+        BREAK
+    PRINTFORML 金额比{COUNT*100}元更多。
+REND
+REPEAT 5
+    SIF MONEY == COUNT*100
+        CONTINUE
+    PRINTFORML 金额不是{COUNT*100}元。
+REND
+
+$INPUT_LOOP
+PRINTL 请输入0-9的整数。
+INPUT
+SIF RESULT &lt; 0 || RESULT &gt; 9
+   GOTO INPUT_LOOP
+PRINTFORML 输入的数字为{RESULT}。
+</code></pre></div><p>输出：</p><div class="language-"><pre><code>你好你好你好你好你好你好你好你好你好你好
+分数：0
+分数：5
+分数：10
+分数：15
+分数：20
+金额比0元更多。
+金额比100元更多。
+金额比200元更多。
+金额不是0元。
+金额不是100元。
+金额不是200元。
+金额不是400元。
+请输入0-9的整数。
+-1 【故意手动输入过小的整数。】
+请输入0-9的整数。
+10 【故意手动输入过大的整数。】
+请输入0-9的整数。
+3 【按要求手动输入。】
+输入的数字为3。
+</code></pre></div><h3 id="关于函数" tabindex="-1">关于函数 <a class="header-anchor" href="#关于函数" aria-hidden="true">#</a></h3><p>一个大型的程序，如果执意要连续不断一气呵成写到最后，而不分为各个部分的话，写出来的程序是很糟糕的。维护难度很大。如果把程序合理的分为不同的部分，可以使程序更加容易被理解。</p><p>我们可以通过“函数”来实现代码的分割。</p><p>函数本身分为“注册”和“调用”两个部分，注册时需要使用<code>@</code>，<code>@</code>之后紧跟函数的名称。合法的函数名称是由字母与下划线构成的，且均为半角。</p><p>游戏启动时最先调用的函数名为<code>EVENTFIRST</code>，我们将在后文进行详细介绍。</p><p>若想<strong>跳转</strong>到某个函数（不返回），请使用<code>JUMP</code>。</p><p>若想<strong>调用</strong>某个函数（执行完后返回），请使用<code>CALL</code>。</p><p>使用<code>CALL</code>语句调用的函数在执行到<code>RETURN</code>语句后可以返回原函数，<code>RETURN</code>语句的参数会被保存在<code>RESULT</code>变量中。若函数执行结束而没有执行<code>RETURN</code>时，<code>RESULT</code>变量中的值为<code>0</code>。</p><p>若使用<code>RESTART</code>语句，当前函数将会冲从头重新开始执行。</p><p>示例：</p><div class="language-"><pre><code>@EVENTFIRST
+PRINTW 游戏开始。
+
+CALL OPENING
+PRINTFORMW 开局函数执行的结果为{RESULT}。
+CALL GAME_MAIN
+PRINTFORMW 游戏的结果为{RESULT}。
+JUMP ENDING
+
+PRINTL 由于上面跳转到ENDING函数，所以本行不执行。
+
+@OPENING
+PRINTW 这是开局函数。
+RETURN 25
+
+@GAME_MAIN
+PRINTW 这是游戏主函数。
+PRINTL 函数内语句运行完毕且不显式执行RETURN语句。
+
+@ENDING
+PRINTW 游戏结束。
+RESTART
+</code></pre></div><p>输出：</p><div class="language-"><pre><code>游戏开始。
+这是开局函数。
+开局函数执行的结果为25。
+这是游戏主函数。
+函数内语句运行完毕且不显式执行RETURN语句。
+游戏的结果为0。
+游戏结束。
+游戏结束。
+游戏结束。
+…… 【无限循环】
+</code></pre></div><h3 id="其他基本命令" tabindex="-1">其他基本命令 <a class="header-anchor" href="#其他基本命令" aria-hidden="true">#</a></h3><p><code>QUIT</code>：退出游戏；</p><p><code>DRAWLINE</code>：用<code>--</code>画一条从左至右的分割线；</p><p><code>TIMES</code>：支持小数的乘法运算（否则EraMaker会对小数自动取整）。</p><p><code>BAR</code>：在屏幕上绘制一个类似于<code>[*****.....]</code>的控件，用法为：<code>BAR [变量] [最大值] [控件长度]</code>。</p><p>示例：</p><div class="language-"><pre><code>MONEY = 500
+DRAWLINE
+BARL MONEY , 1000 , 20
+PRINTFORMW 我有{MONEY}元钱。
+DRAWLINE
+TIMES MONEY , 1.25
+BARL MONEY , 1000 , 20
+PRINTFORMW 我有{MONEY}元钱，游戏结束。
+QUIT
+</code></pre></div><p>输出：</p><div class="language-"><pre><code>------------------------------
+[**********..........]
+我有500元钱。
+------------------------------
+[************........]
+我有625元钱，游戏结束。
+</code></pre></div><h3 id="关于命令（训练）" tabindex="-1">关于命令（<s>训练</s>） <a class="header-anchor" href="#关于命令（训练）" aria-hidden="true">#</a></h3><p>EraMaker有一些<s>训练</s>专用的特殊命令。</p><h4 id="显示训练专用的数据" tabindex="-1">显示训练专用的数据 <a class="header-anchor" href="#显示训练专用的数据" aria-hidden="true">#</a></h4><p><code>PRINT_ABL</code>：显示角色的能力；</p><p><code>PRINT_TALENT</code>：显示角色的素质；</p><p><code>PRINT_MARK</code>：显示角色的刻印；</p><p><code>PRINT_EXP</code>：显示角色的经验；</p><p><code>PRINT_PALAM</code>：显示角色训练中的参数；</p><p>使用以上的命令时，请指定需要显示的角色，如<code>PRINT_ABL 0</code>一般标识显示主角的能力。</p><p><code>PRINT_ITEM</code>：显示持有的物品；</p><p><code>PRINT_SHOPITEM</code>：显示商店中的物品；</p><p><code>UPCHECK</code>：显示训练命令在训练期间参数的变化。</p><h3 id="角色管理" tabindex="-1">角色管理 <a class="header-anchor" href="#角色管理" aria-hidden="true">#</a></h3><p><code>ADDCHARA</code>：新增一个角色。如果需要添加一个编号为3的角色，<code>ADDCHARA 3</code>。</p><p><code>ADDSPCHARA</code>：新增一个SP角色。如果需要添加一个编号为3的角色，<code>ADDSPCHARA 3</code>。（SP角色是指角色编号为0或1的角色。）</p><p><code>DELCHARA</code>：删除一个由<code>ADDCHARA</code>或其他方法添加的角色。</p><p>示例：</p><div class="language-"><pre><code>;编号为0的角色为名为小明的主人公
+;编号为3的角色名字是小红、5的角色名字是小刚、6的角色名字是小垃圾
+PRINTFORML 当前共有{CHARANUM}名角色。
+ADDCHARA 3
+ADDCHARA 5
+ADDCHARA 6
+PRINTFORML 当前共有{CHARANUM}名角色。
+REPEAT CHARANUM
+    PRINTFORML 第{COUNT}号为%NAME:COUNT%。
+REND
+DELCHARA 2
+PRINTFORML 当前共有{CHARANUM}名角色。
+REPEAT CHARANUM
+    PRINTFORML 第{COUNT}号为%NAME:COUNT%。
+REND
+</code></pre></div><p>输出：</p><div class="language-"><pre><code>当前共有1名角色。
+当前共有4名角色。
+第0号为小明。
+第1号为小红。
+第2号为小刚。
+第3号为小垃圾。
+当前共有3名角色。
+第0号为小明。
+第1号为小红。
+第2号为小垃圾。
+</code></pre></div><h3 id="存档相关" tabindex="-1">存档相关 <a class="header-anchor" href="#存档相关" aria-hidden="true">#</a></h3><p><code>SAVEGAME</code>：呼出保存存档界面；</p><p><code>LOADGAME</code>：呼出加载存档界面；</p><p>上面两条命令都只能在<code>SHOP</code>中调用。</p><p><code>PUTFORM</code>只能与一个名为<code>@SAVEINFO</code>的特殊函数一起使用，它可以用与PRINTFORM类似的格式来写出你的存档的概况。如该存档已经过去了多少天，角色的能力是什么，以及正在训练哪个角色等。</p><h3 id="关于begin" tabindex="-1">关于BEGIN <a class="header-anchor" href="#关于begin" aria-hidden="true">#</a></h3><p><code>BEGIN</code>可以通过调用各种系统指令来推进游戏。</p><p>正在执行的函数在调用<code>BEGIN</code>函数后会被终止，即使<code>BEGIN</code>函数从其他地方被<code>CALL</code>语句调用，它也不会返回到原来的函数。</p><p><code>BEGIN TRAIN</code>：开始训练；</p><p><code>BEGIN AFTERTRAIN</code>：结束训练；</p><p><code>BEGIN ABLUP</code>：呼出升级界面；</p><p><code>BEGIN TURNEND</code>：结束回合；</p><p><code>BEGIN SHOP</code>：呼出SHOP界面；</p></div></div><footer class="page-footer" data-v-7eddb2c4 data-v-fb8d84c6><div class="edit" data-v-fb8d84c6><div class="edit-link" data-v-fb8d84c6 data-v-1ed99556><!----></div></div><div class="updated" data-v-fb8d84c6><!----></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"64e80f5f\",\"guide_command documentation.md\":\"8eb88214\",\"guide_language specification.md\":\"be4808c1\",\"guide_menu.md\":\"94db5176\",\"guide_quick start.md\":\"07b2644d\",\"guide_tutorial.md\":\"741461ba\",\"guide_index.md\":\"08046aa3\",\"reference_emuera code analyze.md\":\"1d5b52b2\",\"reference_emuera manual.md\":\"ee692f8e\",\"reference_era series history.md\":\"aaed01b0\",\"reference_erabasic api reference.md\":\"165f00df\",\"reference_erabasic manual.md\":\"c185b422\",\"reference_erabasic quick start.md\":\"fe040443\",\"reference_erabasic tutorial.md\":\"9ac09ed2\",\"reference_eramaker basic manual.md\":\"78f7e633\",\"reference_eramaker manual.md\":\"27d7b4e1\",\"reference_menu.md\":\"ef4c3980\",\"reference_player manual.md\":\"2d02a3ce\",\"reference_index.md\":\"cdfdb152\",\"translation_csv_file_format.md\":\"91ea92d5\",\"translation_configs.md\":\"b5f4bcd8\",\"translation_debug_commands.md\":\"e3bf6561\",\"translation_debug_modes.md\":\"737ee81c\",\"translation_difference.md\":\"3f7c8bbe\",\"translation_erb_file_format.md\":\"a1717744\",\"translation_emuera_dictionary.md\":\"6521878b\",\"translation_erabasic_structure.md\":\"cf73b746\",\"translation_erabasic_variables.md\":\"df22f749\",\"translation_flow.md\":\"6d4978af\",\"translation_new_features.md\":\"f8825689\",\"translation_replace_csv.md\":\"a12a563a\",\"translation_index.md\":\"e9dd7219\"}")</script>
+    <script type="module" async src="/Emuera-Chinese-Document/assets/app.c45c263d.js"></script>
   </body>
 </html>
