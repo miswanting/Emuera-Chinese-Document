@@ -2,7 +2,7 @@ module.exports = {
   title: 'Emuera 中文文档',
   description: 'Emuera 中文文档',
   lang: 'zh-CN',
-  // base: '/ecd/',
+  base: '/Emuera-Chinese-Document/',
   themeConfig: {
     nav: [
       {
