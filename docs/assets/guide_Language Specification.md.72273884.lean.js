@@ -1,0 +1,1 @@
+import{o as i,c as l,a}from"./app.bcba0c23.js";const t='{"title":"","description":"","frontmatter":{},"relativePath":"guide/Language Specification.md","lastUpdated":1631106079469}',e={},n=[a('',3)];e.render=function(a,t,e,r,u,_){return i(),l("div",null,n)};export{t as __pageData,e as default};
