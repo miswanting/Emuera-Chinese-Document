@@ -1,0 +1,50 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - page
+
+jobs:
+  ubuntu-builder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+      - name: Checkout Target
+        continue-on-error: true
+        uses: actions/checkout@v2
+        with:
+          ref: "gh-pages"
+      - name: Checkout Source
+        uses: actions/checkout@v2
+        with:
+          ref: "master"
+          path: "core"
+      - name: Build Document
+        run: |
+          cd core
+          yarn
+          yarn run docs:build
+          cd ..
+          mv core/docs/.vitepress/dist dist
+          rm -r core
+      - name: Try Delete Old Folder
+        continue-on-error: true
+        run: |
+          rm -r docs
+      - name: Rename
+        run: |
+          mv dist docs
+      - name: Push
+        uses: github-actions-x/commit@v2.8
+        with:
+          github-token: ${{ secrets.KEY }}
+          push-branch: "gh-pages"
+          commit-message: "Auto Generate & Deploy"
+          force-add: "true"
+          files: ./*
+          name: Miswanting
+          email: ihex@foxmail.com

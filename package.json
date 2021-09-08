@@ -1,0 +1,18 @@
+{
+  "name": "emuera-chinese-document",
+  "version": "0.1.0",
+  "description": "docs",
+  "main": "index.js",
+  "repository": "https://github.com/miswanting/Emuera-Chinese-Document.git",
+  "author": "Miswanting <ihex@foxmail.com>",
+  "license": "GPL-3.0+",
+  "scripts": {
+    "init": "yarn",
+    "docs:dev": "yarn vitepress dev docs",
+    "docs:build": "yarn vitepress build docs",
+    "docs:serve": "yarn vitepress serve docs"
+  },
+  "devDependencies": {
+    "vitepress": "latest"
+  }
+}
