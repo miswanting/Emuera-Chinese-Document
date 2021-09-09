@@ -14,6 +14,8 @@ features:
 footer: GPL-3.0+ Licensed | Copyright © 2021-Present Miswanting：：
 ---
 
+[![Deploy GitHub Pages](https://github.com/miswanting/Emuera-Chinese-Document/actions/workflows/Deploy.yml/badge.svg)](https://github.com/miswanting/Emuera-Chinese-Document/actions/workflows/Deploy.yml)
+
 ::: warning 提示
 
 本文档正在**加急**制作中。

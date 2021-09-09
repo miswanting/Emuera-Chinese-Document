@@ -383,9 +383,95 @@ PRINTFORMSW STR:0
 
 ### 条件判断
 
-如果条件表达式不是0，则`SIF`执行下一行。
+#### SIF
 
-如果条件表达式不为0（有效时），`SIF`执行下一行。 0（无效时），跳过下一行。
+SIF，即Single if。其表达式的真假与否，只控制 SIF 语句的下一行是否执行。
+
+用法为：
+
+```
+SIF <expression>
+  <statement>
+```
+
+示例：
+
+```
+A = 1
+B = 2
+C = 4
+
+SIF A == 1
+    PRINTL 测试1
+SIF B != 1
+    PRINTL 测试2
+SIF C < 5
+    PRINTL 测试3
+```
+
+输出：
+
+```
+测试1
+测试2
+测试3
+```
+
+#### IF
+
+IF 表达式的真假与否，控制一个代码块的执行与否。
+
+结构为：
+
+```
+;IF-ENDIF模式
+IF <expression>
+  <statement>
+  ...
+  <statement>
+ENDIF
+
+;IF-ELSEIF-ENDIF模式
+IF <expression>
+  <statement>
+  ...
+  <statement>
+ELSEIF <expression>
+  <statement>
+  ...
+  <statement>
+ENDIF
+
+;IF-ELSE-ENDIF模式
+IF <expression>
+  <statement>
+  ...
+  <statement>
+ELSE
+  <statement>
+  ...
+  <statement>
+ENDIF
+
+;IF-ELSEIF-ELSE-ENDIF模式
+IF <expression>
+  <statement>
+  ...
+  <statement>
+ELSEIF <expression>
+  <statement>
+  ...
+  <statement>
+ELSE
+  <statement>
+  ...
+  <statement>
+ENDIF
+```
+
+- 若条件表达式不为0，则`SIF`执行下一行；
+- 若条件表达式为0，则跳过下一行；
+- 执行至`Else`/`ElseIf`/`EndIf`，如果是0，则跳过，
 
 如果条件表达式不是0，则执行下一行，直到达到`ELSE`、`ELSEIF`和`ENDIF`。 如果是0，则跳过`ELSE`、`ELSEIF`和`ENDIF`；如果是0，则跳过`ELSE`、`ELSEIF`和`ENDIF`；如果是`ELSE`，则从下一行开始执行，直到到达`ENDIF`；如果是`ELSEIF`，则从下一行开始执行，直到到达`ELSE`、`ELSEIF`或`ENDIF`。 如果条件表达式是`ELSEIF`，则从下一行开始执行，直到到达`ELSE`、`ELSEIF`或`ENDIF`为止；否则，它将跳过，直到到达`ELSE`、`ELSEIF`或`ENDIF`为止，并重复该过程。
 
