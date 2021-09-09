@@ -3,7 +3,7 @@ home: true
 heroText: Emuera 中文文档
 tagline: v0.1.0
 actionText: 快速开始
-actionLink: /guide/
+actionLink: guide/Quick_Start
 features:
   - title: 更完善
     details: 涵盖了与 Emuera 相关的方方面面。
@@ -16,15 +16,11 @@ footer: GPL-3.0+ Licensed | Copyright © 2021-Present Miswanting：：
 
 ::: warning 提示
 
-本文档正在加急制作中，详细进度请参考[此处](#项目状态)。
+本文档正在**加急**制作中。
 
 :::
 
-# 快速导航
-
-[编写一个最简单的 Emuera 游戏]()
-
-# 项目状态
+# 项目进度
 
 ## 第一步：翻译部分
 
@@ -41,17 +37,29 @@ footer: GPL-3.0+ Licensed | Copyright © 2021-Present Miswanting：：
    - :black_circle:`直译`[程序流程]()
    - :black_circle:`直译`[与 EraMaker 的差异]()
    - :black_circle:`直译`[新增的扩展语法]()
+     - :black_circle:`直译`[新增的扩展语法]()
 
 ## 第二步：指南部分
 
 - :black_circle:`指南`快速开始
-- :black_circle:`指南`教程
+- :black_circle:`指南`入门教程
+- :black_circle:`指南`MCS 代码风格介绍
+- :black_circle:`指南`Era 系列历史
 
 ## 第三步：参考部分
 
-- :black_circle:`参考`程序
-- :black_circle:`参考`文件
-- :black_circle:`参考`文件
+- :black_circle:`参考`CSV 文件
+  - :black_circle:`参考`GameBase.csv
+  - :black_circle:`参考`Str.csv
+  - :black_circle:`参考`CharaXX.csv
+  - :black_circle:`参考`其他
+- :black_circle:`参考`ERB 文件
+  - :black_circle:`参考`文件结构
+  - :black_circle:`参考`变量
+  - :black_circle:`参考`表达式
+  - :black_circle:`参考`语句
+  - :black_circle:`参考`复合语句
+  - :black_circle:`参考`内置流程
 
 ## 第四步：开发部分
 
