@@ -1,1 +1,0 @@
-import{o as t,c as a}from"./app.c45c263d.js";const r='{"title":"","description":"","frontmatter":{},"relativePath":"translation/Configs.md","lastUpdated":1631114576403}',e={};e.render=function(r,e,n,o,i,s){return t(),a("div")};export{r as __pageData,e as default};
