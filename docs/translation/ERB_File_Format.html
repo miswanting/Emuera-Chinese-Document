@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/Emuera-Chinese-Document/assets/style.cac40d77.css">
     <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/Home.5e4005d5.js">
     <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/app.b380940c.js">
-    <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/translation_ERB_File_Format.md.4cade81d.lean.js">
+    <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/translation_ERB_File_Format.md.ec9b1491.lean.js">
     <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/app.b380940c.js">
     <meta name="twitter:title" content="Eramaker 的 ERB 文件格式 | Emuera 中文文档">
     <meta property="og:title" content="Eramaker 的 ERB 文件格式 | Emuera 中文文档">
@@ -98,14 +98,20 @@ WAIT
 </code></pre></div></div><div class="warning custom-block"><p class="custom-block-title">错误</p><div class="language-sh"><pre><code>PRINT这是一个测试。
 ;等待输入
 WAIT 0
-</code></pre></div></div><h3 id="显示文字" tabindex="-1">显示文字 <a class="header-anchor" href="#显示文字" aria-hidden="true">#</a></h3><ul><li><code>PRINT</code>是显示一个字符的命令，<code>PRINTL</code>显示一个字符并新建一行。</li><li><code>PRINTVW</code>显示变量的内容并等待输入。</li><li><code>PRINTVW</code>显示变量的内容并等待输入。</li><li><code>PRINTFORM</code>可以显示字符、变量、字符串变量等的组合，<code>PRINTFORML</code>做的和换行一样，<code>PRINTFORMW</code>做的和等待输入一样。</li><li><code>PRINTFORMS</code>将字符串变量的内容和<code>PRINTFORM</code>一样转换，并显示出来，<code>PRINTFORMSL</code>也是如此，还有换行，<code>PRINTFORMSW</code>也是如此，并等待输入。</li><li><code>PRINTFORMSW</code>做同样的工作，等待输入；<code>PRINTFORMSL</code>做同样的工作，等待输入；</li><li><code>PRINTFORMSW</code>做同样的工作，等待输入；<code>PRINTFORMSL</code>做同样的工作，等待输入。</li></ul><p>示例：</p><div class="language-"><pre><code>MONEY = 500
+</code></pre></div></div><h3 id="显示文字" tabindex="-1">显示文字 <a class="header-anchor" href="#显示文字" aria-hidden="true">#</a></h3><ul><li><code>Print</code>：显示文字；</li><li><code>PrintL</code>：显示文字，并换行；</li><li><code>PrintW</code>：显示文字，并等待输入；</li><li><code>PrintV</code>：显示变量的值；</li><li><code>PrintVL</code>：显示变量的值，并换行；</li><li><code>PrintVW</code>：显示变量的值，并等待输入；</li><li><code>PrintS</code>：显示数列的值；</li><li><code>PrintSL</code>：显示数列的值，并换行；</li><li><code>PrintSW</code>：显示数列的值，并等待输入；</li><li><code>PrintForm</code>：显示文字、变量、数列组合后的文本；</li><li><code>PrintFormL</code>：显示文字、变量、数列组合后的文本，并换行；</li><li><code>PrintFormW</code>：显示文字、变量、数列组合后的文本，并等待输入；</li><li><code>PrintFormS</code>：显示文字、变量、数列组合后的数列的文本；</li><li><code>PrintFormSL</code>：显示文字、变量、数列组合后的数列的文本，并换行；</li><li><code>PrintFormSW</code>：显示文字、变量、数列组合后的数列的文本，并等待输入；</li></ul><p>示例：</p><div class="language-"><pre><code>MONEY = 500
 NAME:0 = 佐藤
+
+;Print系
 PRINT 存款有
 PRINTV MONEY
 PRINTL 元。
+
+;PrintS系
 PRINT 我的名字叫
 PRINTS NAME:0
 PRINTL 。
+
+;PrintForm系
 PRINTFORML 重复一遍，我的名字叫%NAME:0%，我的存款有{MONEY}元。
 PRINTFORMW 如果存款加上1000日元，后支付600日元，剩下的就是{MONEY+1000-600}元。
 STR:0 = 将这些钱乘以5，就得到{(MONEY+1000-600)*5}元。
@@ -173,7 +179,7 @@ ELSE
   ...
   &lt;statement&gt;
 ENDIF
-</code></pre></div><ul><li>若条件表达式不为0，则<code>SIF</code>执行下一行；</li><li>若条件表达式为0，则跳过下一行；</li><li>执行至<code>Else</code>/<code>ElseIf</code>/<code>EndIf</code>，如果是0，则跳过，</li></ul><p>如果条件表达式不是0，则执行下一行，直到达到<code>ELSE</code>、<code>ELSEIF</code>和<code>ENDIF</code>。 如果是0，则跳过<code>ELSE</code>、<code>ELSEIF</code>和<code>ENDIF</code>；如果是0，则跳过<code>ELSE</code>、<code>ELSEIF</code>和<code>ENDIF</code>；如果是<code>ELSE</code>，则从下一行开始执行，直到到达<code>ENDIF</code>；如果是<code>ELSEIF</code>，则从下一行开始执行，直到到达<code>ELSE</code>、<code>ELSEIF</code>或<code>ENDIF</code>。 如果条件表达式是<code>ELSEIF</code>，则从下一行开始执行，直到到达<code>ELSE</code>、<code>ELSEIF</code>或<code>ENDIF</code>为止；否则，它将跳过，直到到达<code>ELSE</code>、<code>ELSEIF</code>或<code>ENDIF</code>为止，并重复该过程。</p><p>示例：</p><div class="language-"><pre><code>A = 1
+</code></pre></div><ul><li>在 SIF 或 IF 语句中，条件表达式若为<code>0</code>，则为<code>False</code>，若不为<code>0</code>，则为<code>True</code>。</li></ul><p>示例：</p><div class="language-"><pre><code>A = 1
 B = 2
 C = 4
 
@@ -260,7 +266,7 @@ PRINTFORML 输入的数字为{RESULT}。
 请输入0-9的整数。
 3 【按要求手动输入。】
 输入的数字为3。
-</code></pre></div><h3 id="关于函数" tabindex="-1">关于函数 <a class="header-anchor" href="#关于函数" aria-hidden="true">#</a></h3><p>一个大型的程序，如果执意要连续不断一气呵成写到最后，而不分为各个部分的话，写出来的程序是很糟糕的。维护难度很大。如果把程序合理的分为不同的部分，可以使程序更加容易被理解。</p><p>我们可以通过“函数”来实现代码的分割。</p><p>函数本身分为“注册”和“调用”两个部分，注册时需要使用<code>@</code>，<code>@</code>之后紧跟函数的名称。合法的函数名称是由字母与下划线构成的，且均为半角。</p><p>游戏启动时最先调用的函数名为<code>EVENTFIRST</code>，我们将在后文进行详细介绍。</p><p>若想<strong>跳转</strong>到某个函数（不返回），请使用<code>JUMP</code>。</p><p>若想<strong>调用</strong>某个函数（执行完后返回），请使用<code>CALL</code>。</p><p>使用<code>CALL</code>语句调用的函数在执行到<code>RETURN</code>语句后可以返回原函数，<code>RETURN</code>语句的参数会被保存在<code>RESULT</code>变量中。若函数执行结束而没有执行<code>RETURN</code>时，<code>RESULT</code>变量中的值为<code>0</code>。</p><p>若使用<code>RESTART</code>语句，当前函数将会冲从头重新开始执行。</p><p>示例：</p><div class="language-"><pre><code>@EVENTFIRST
+</code></pre></div><h3 id="关于函数" tabindex="-1">关于函数 <a class="header-anchor" href="#关于函数" aria-hidden="true">#</a></h3><p>一个大型的程序，如果执意要连续不断一气呵成写到最后，而不分为各个部分的话，写出来的程序是很糟糕的。维护难度很大。如果把程序合理的分为不同的部分，可以使程序更加容易被理解。</p><p>我们可以通过“函数”来实现代码的分割。</p><p>函数本身分为“注册”和“调用”两个部分，注册时需要使用<code>@</code>，<code>@</code>之后紧跟函数的名称。合法的函数名称是由字母与下划线构成的，且均为半角。</p><p>游戏启动时最先调用的函数名为<code>EVENTFIRST</code>，我们将在后文进行详细介绍。</p><p>若想<strong>跳转</strong>到某个函数（不返回），请使用<code>JUMP</code>。</p><p>若想<strong>调用</strong>某个函数（执行完后返回），请使用<code>CALL</code>。</p><p>使用<code>CALL</code>语句调用的函数在执行到<code>RETURN</code>语句后可以返回原函数，<code>RETURN</code>语句的参数会被保存在<code>RESULT</code>变量中。若函数执行结束而没有执行<code>RETURN</code>时，<code>RESULT</code>变量中的值为<code>0</code>。</p><p>若使用<code>RESTART</code>语句，当前函数将会从头重新开始执行。</p><p>示例：</p><div class="language-"><pre><code>@EVENTFIRST
 PRINTW 游戏开始。
 
 CALL OPENING
@@ -333,7 +339,7 @@ REND
 第1号为小红。
 第2号为小垃圾。
 </code></pre></div><h3 id="存档相关" tabindex="-1">存档相关 <a class="header-anchor" href="#存档相关" aria-hidden="true">#</a></h3><p><code>SAVEGAME</code>：呼出保存存档界面；</p><p><code>LOADGAME</code>：呼出加载存档界面；</p><p>上面两条命令都只能在<code>SHOP</code>中调用。</p><p><code>PUTFORM</code>只能与一个名为<code>@SAVEINFO</code>的特殊函数一起使用，它可以用与PRINTFORM类似的格式来写出你的存档的概况。如该存档已经过去了多少天，角色的能力是什么，以及正在训练哪个角色等。</p><h3 id="关于begin" tabindex="-1">关于BEGIN <a class="header-anchor" href="#关于begin" aria-hidden="true">#</a></h3><p><code>BEGIN</code>可以通过调用各种系统指令来推进游戏。</p><p>正在执行的函数在调用<code>BEGIN</code>函数后会被终止，即使<code>BEGIN</code>函数从其他地方被<code>CALL</code>语句调用，它也不会返回到原来的函数。</p><p><code>BEGIN TRAIN</code>：开始训练；</p><p><code>BEGIN AFTERTRAIN</code>：结束训练；</p><p><code>BEGIN ABLUP</code>：呼出升级界面；</p><p><code>BEGIN TURNEND</code>：结束回合；</p><p><code>BEGIN SHOP</code>：呼出SHOP界面；</p></div></div><footer class="page-footer" data-v-7eddb2c4 data-v-fb8d84c6><div class="edit" data-v-fb8d84c6><div class="edit-link" data-v-fb8d84c6 data-v-1ed99556><!----></div></div><div class="updated" data-v-fb8d84c6><!----></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
-    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"0c554a1e\",\"guide_command documentation.md\":\"7dd90005\",\"guide_history.md\":\"a9bdfcee\",\"guide_language specification.md\":\"e0190a0f\",\"guide_menu.md\":\"d76667d2\",\"guide_quick start.md\":\"0af7e9eb\",\"guide_quick_start.md\":\"89ba02ec\",\"guide_tutorials.md\":\"4b10235d\",\"guide_index.md\":\"fa2a2e92\",\"reference_csv_file.md\":\"ee455899\",\"reference_erb_compound_statements.md\":\"dee9a5c4\",\"reference_erb_expressions.md\":\"568a4ea0\",\"reference_erb_internal_process.md\":\"66f09f77\",\"reference_erb_statements.md\":\"58ccc505\",\"reference_erb_structure.md\":\"b3e9c4f1\",\"reference_erb_variables.md\":\"771c0c8d\",\"reference_emuera code analyze.md\":\"7d652feb\",\"reference_emuera manual.md\":\"b1ee9fd0\",\"reference_era series history.md\":\"36d30126\",\"reference_erabasic api reference.md\":\"b171ce39\",\"reference_erabasic manual.md\":\"78356ff4\",\"reference_erabasic quick start.md\":\"2c186844\",\"reference_erabasic tutorial.md\":\"c7d80630\",\"reference_eramaker basic manual.md\":\"4e5608d0\",\"reference_eramaker manual.md\":\"a2f2f078\",\"reference_menu.md\":\"d0b2e37f\",\"reference_player manual.md\":\"c1675fc6\",\"reference_index.md\":\"57fea90b\",\"translation_csv_file_format.md\":\"64cbaf8f\",\"translation_configs.md\":\"1eb0d63e\",\"translation_debug_commands.md\":\"6d39ee97\",\"translation_debug_modes.md\":\"29e77be4\",\"translation_difference.md\":\"fdb338c7\",\"translation_erb_file_format.md\":\"4cade81d\",\"translation_emuera_dictionary.md\":\"fd5e307d\",\"translation_erabasic_structure.md\":\"912c7022\",\"translation_erabasic_variables.md\":\"00672eb2\",\"translation_flow.md\":\"38d8fc4b\",\"translation_new_features.md\":\"b582dfa3\",\"translation_replace_csv.md\":\"1d9e8141\",\"translation_index.md\":\"7ea598a1\"}")</script>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"bec0396d\",\"guide_command documentation.md\":\"fb4cc1f6\",\"guide_history.md\":\"13a71bb8\",\"guide_language specification.md\":\"034e7538\",\"guide_menu.md\":\"07039360\",\"guide_quick start.md\":\"2229d8fe\",\"guide_quick_start.md\":\"0c20870f\",\"guide_tutorials.md\":\"ded866d3\",\"guide_index.md\":\"f4bee12a\",\"reference_csv_file.md\":\"2e91cc3e\",\"reference_erb_compound_statements.md\":\"0496b900\",\"reference_erb_expressions.md\":\"eb933272\",\"reference_erb_internal_process.md\":\"0e611d58\",\"reference_erb_statements.md\":\"bd85be2a\",\"reference_erb_structure.md\":\"26b2148e\",\"reference_erb_variables.md\":\"eace1b46\",\"reference_emuera code analyze.md\":\"dc123a5a\",\"reference_emuera manual.md\":\"f7a12625\",\"reference_era series history.md\":\"540c5c85\",\"reference_erabasic api reference.md\":\"e8ba4763\",\"reference_erabasic manual.md\":\"4d8a0574\",\"reference_erabasic quick start.md\":\"492a327d\",\"reference_erabasic tutorial.md\":\"35ce413e\",\"reference_eramaker basic manual.md\":\"6e9b922e\",\"reference_eramaker manual.md\":\"ef7af27d\",\"reference_menu.md\":\"6e877bf6\",\"reference_player manual.md\":\"7d37a77b\",\"reference_index.md\":\"8240ec67\",\"translation_csv_file_format.md\":\"ffb89d41\",\"translation_configs.md\":\"da74e909\",\"translation_debug_command.md\":\"ac17566b\",\"translation_debug_commands.md\":\"45f9b7f6\",\"translation_debug_mode.md\":\"bf2cd655\",\"translation_debug_modes.md\":\"1fe94193\",\"translation_difference.md\":\"113eecb2\",\"translation_erb_file_format.md\":\"ec9b1491\",\"translation_emuera_dictionary.md\":\"b7bbab3a\",\"translation_erabasic_structure.md\":\"2504c5e3\",\"translation_erabasic_variables.md\":\"e7f9e84e\",\"translation_flow.md\":\"838f870f\",\"translation_glossary.md\":\"9a4aee8c\",\"translation_new_features.md\":\"1f6736cd\",\"translation_replace_csv.md\":\"08501935\",\"translation_index.md\":\"37009d86\"}")</script>
     <script type="module" async src="/Emuera-Chinese-Document/assets/app.b380940c.js"></script>
   </body>
 </html>
