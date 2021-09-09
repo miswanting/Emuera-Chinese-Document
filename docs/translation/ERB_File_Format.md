@@ -346,25 +346,39 @@ WAIT 0
 
 ### 显示文字
 
-- `PRINT`是显示一个字符的命令，`PRINTL`显示一个字符并新建一行。
-- `PRINTVW`显示变量的内容并等待输入。
-- `PRINTVW`显示变量的内容并等待输入。
-- `PRINTFORM`可以显示字符、变量、字符串变量等的组合，`PRINTFORML`做的和换行一样，`PRINTFORMW`做的和等待输入一样。
-- `PRINTFORMS`将字符串变量的内容和`PRINTFORM`一样转换，并显示出来，`PRINTFORMSL`也是如此，还有换行，`PRINTFORMSW`也是如此，并等待输入。
-- `PRINTFORMSW`做同样的工作，等待输入；`PRINTFORMSL`做同样的工作，等待输入；
-- `PRINTFORMSW`做同样的工作，等待输入；`PRINTFORMSL`做同样的工作，等待输入。
+- `Print`：显示文字；
+- `PrintL`：显示文字，并换行；
+- `PrintW`：显示文字，并等待输入；
+- `PrintV`：显示变量的值；
+- `PrintVL`：显示变量的值，并换行；
+- `PrintVW`：显示变量的值，并等待输入；
+- `PrintS`：显示数列的值；
+- `PrintSL`：显示数列的值，并换行；
+- `PrintSW`：显示数列的值，并等待输入；
+- `PrintForm`：显示文字、变量、数列组合后的文本；
+- `PrintFormL`：显示文字、变量、数列组合后的文本，并换行；
+- `PrintFormW`：显示文字、变量、数列组合后的文本，并等待输入；
+- `PrintFormS`：显示文字、变量、数列组合后的数列的文本；
+- `PrintFormSL`：显示文字、变量、数列组合后的数列的文本，并换行；
+- `PrintFormSW`：显示文字、变量、数列组合后的数列的文本，并等待输入；
 
 示例：
 
 ```
 MONEY = 500
 NAME:0 = 佐藤
+
+;Print系
 PRINT 存款有
 PRINTV MONEY
 PRINTL 元。
+
+;PrintS系
 PRINT 我的名字叫
 PRINTS NAME:0
 PRINTL 。
+
+;PrintForm系
 PRINTFORML 重复一遍，我的名字叫%NAME:0%，我的存款有{MONEY}元。
 PRINTFORMW 如果存款加上1000日元，后支付600日元，剩下的就是{MONEY+1000-600}元。
 STR:0 = 将这些钱乘以5，就得到{(MONEY+1000-600)*5}元。
@@ -469,11 +483,7 @@ ELSE
 ENDIF
 ```
 
-- 若条件表达式不为0，则`SIF`执行下一行；
-- 若条件表达式为0，则跳过下一行；
-- 执行至`Else`/`ElseIf`/`EndIf`，如果是0，则跳过，
-
-如果条件表达式不是0，则执行下一行，直到达到`ELSE`、`ELSEIF`和`ENDIF`。 如果是0，则跳过`ELSE`、`ELSEIF`和`ENDIF`；如果是0，则跳过`ELSE`、`ELSEIF`和`ENDIF`；如果是`ELSE`，则从下一行开始执行，直到到达`ENDIF`；如果是`ELSEIF`，则从下一行开始执行，直到到达`ELSE`、`ELSEIF`或`ENDIF`。 如果条件表达式是`ELSEIF`，则从下一行开始执行，直到到达`ELSE`、`ELSEIF`或`ENDIF`为止；否则，它将跳过，直到到达`ELSE`、`ELSEIF`或`ENDIF`为止，并重复该过程。
+- 在 SIF 或 IF 语句中，条件表达式若为`0`，则为`False`，若不为`0`，则为`True`。
 
 示例：
 
@@ -638,7 +648,7 @@ PRINTFORML 输入的数字为{RESULT}。
 
 使用`CALL`语句调用的函数在执行到`RETURN`语句后可以返回原函数，`RETURN`语句的参数会被保存在`RESULT`变量中。若函数执行结束而没有执行`RETURN`时，`RESULT`变量中的值为`0`。
 
-若使用`RESTART`语句，当前函数将会冲从头重新开始执行。
+若使用`RESTART`语句，当前函数将会从头重新开始执行。
 
 示例：
 
