@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/Emuera-Chinese-Document/assets/style.cac40d77.css">
     <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/Home.5e4005d5.js">
     <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/app.b380940c.js">
-    <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/translation_ERB_File_Format.md.a52686ff.lean.js">
+    <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/translation_ERB_File_Format.md.4cade81d.lean.js">
     <link rel="modulepreload" href="/Emuera-Chinese-Document/assets/app.b380940c.js">
     <meta name="twitter:title" content="Eramaker 的 ERB 文件格式 | Emuera 中文文档">
     <meta property="og:title" content="Eramaker 的 ERB 文件格式 | Emuera 中文文档">
@@ -115,7 +115,65 @@ PRINTFORMSW STR:0
 重复一遍，我的名字叫佐藤，我的存款有500元。
 如果得到1000日元，支付600元，剩下的就是900元。
 将这些钱乘以5，就得到4500元。
-</code></pre></div><h3 id="条件判断" tabindex="-1">条件判断 <a class="header-anchor" href="#条件判断" aria-hidden="true">#</a></h3><p>如果条件表达式不是0，则<code>SIF</code>执行下一行。</p><p>如果条件表达式不为0（有效时），<code>SIF</code>执行下一行。 0（无效时），跳过下一行。</p><p>如果条件表达式不是0，则执行下一行，直到达到<code>ELSE</code>、<code>ELSEIF</code>和<code>ENDIF</code>。 如果是0，则跳过<code>ELSE</code>、<code>ELSEIF</code>和<code>ENDIF</code>；如果是0，则跳过<code>ELSE</code>、<code>ELSEIF</code>和<code>ENDIF</code>；如果是<code>ELSE</code>，则从下一行开始执行，直到到达<code>ENDIF</code>；如果是<code>ELSEIF</code>，则从下一行开始执行，直到到达<code>ELSE</code>、<code>ELSEIF</code>或<code>ENDIF</code>。 如果条件表达式是<code>ELSEIF</code>，则从下一行开始执行，直到到达<code>ELSE</code>、<code>ELSEIF</code>或<code>ENDIF</code>为止；否则，它将跳过，直到到达<code>ELSE</code>、<code>ELSEIF</code>或<code>ENDIF</code>为止，并重复该过程。</p><p>示例：</p><div class="language-"><pre><code>A = 1
+</code></pre></div><h3 id="条件判断" tabindex="-1">条件判断 <a class="header-anchor" href="#条件判断" aria-hidden="true">#</a></h3><h4 id="sif" tabindex="-1">SIF <a class="header-anchor" href="#sif" aria-hidden="true">#</a></h4><p>SIF，即Single if。其表达式的真假与否，只控制 SIF 语句的下一行是否执行。</p><p>用法为：</p><div class="language-"><pre><code>SIF &lt;expression&gt;
+  &lt;statement&gt;
+</code></pre></div><p>示例：</p><div class="language-"><pre><code>A = 1
+B = 2
+C = 4
+
+SIF A == 1
+    PRINTL 测试1
+SIF B != 1
+    PRINTL 测试2
+SIF C &lt; 5
+    PRINTL 测试3
+</code></pre></div><p>输出：</p><div class="language-"><pre><code>测试1
+测试2
+测试3
+</code></pre></div><h4 id="if" tabindex="-1">IF <a class="header-anchor" href="#if" aria-hidden="true">#</a></h4><p>IF 表达式的真假与否，控制一个代码块的执行与否。</p><p>结构为：</p><div class="language-"><pre><code>;IF-ENDIF模式
+IF &lt;expression&gt;
+  &lt;statement&gt;
+  ...
+  &lt;statement&gt;
+ENDIF
+
+;IF-ELSEIF-ENDIF模式
+IF &lt;expression&gt;
+  &lt;statement&gt;
+  ...
+  &lt;statement&gt;
+ELSEIF &lt;expression&gt;
+  &lt;statement&gt;
+  ...
+  &lt;statement&gt;
+ENDIF
+
+;IF-ELSE-ENDIF模式
+IF &lt;expression&gt;
+  &lt;statement&gt;
+  ...
+  &lt;statement&gt;
+ELSE
+  &lt;statement&gt;
+  ...
+  &lt;statement&gt;
+ENDIF
+
+;IF-ELSEIF-ELSE-ENDIF模式
+IF &lt;expression&gt;
+  &lt;statement&gt;
+  ...
+  &lt;statement&gt;
+ELSEIF &lt;expression&gt;
+  &lt;statement&gt;
+  ...
+  &lt;statement&gt;
+ELSE
+  &lt;statement&gt;
+  ...
+  &lt;statement&gt;
+ENDIF
+</code></pre></div><ul><li>若条件表达式不为0，则<code>SIF</code>执行下一行；</li><li>若条件表达式为0，则跳过下一行；</li><li>执行至<code>Else</code>/<code>ElseIf</code>/<code>EndIf</code>，如果是0，则跳过，</li></ul><p>如果条件表达式不是0，则执行下一行，直到达到<code>ELSE</code>、<code>ELSEIF</code>和<code>ENDIF</code>。 如果是0，则跳过<code>ELSE</code>、<code>ELSEIF</code>和<code>ENDIF</code>；如果是0，则跳过<code>ELSE</code>、<code>ELSEIF</code>和<code>ENDIF</code>；如果是<code>ELSE</code>，则从下一行开始执行，直到到达<code>ENDIF</code>；如果是<code>ELSEIF</code>，则从下一行开始执行，直到到达<code>ELSE</code>、<code>ELSEIF</code>或<code>ENDIF</code>。 如果条件表达式是<code>ELSEIF</code>，则从下一行开始执行，直到到达<code>ELSE</code>、<code>ELSEIF</code>或<code>ENDIF</code>为止；否则，它将跳过，直到到达<code>ELSE</code>、<code>ELSEIF</code>或<code>ENDIF</code>为止，并重复该过程。</p><p>示例：</p><div class="language-"><pre><code>A = 1
 B = 2
 C = 4
 
@@ -275,7 +333,7 @@ REND
 第1号为小红。
 第2号为小垃圾。
 </code></pre></div><h3 id="存档相关" tabindex="-1">存档相关 <a class="header-anchor" href="#存档相关" aria-hidden="true">#</a></h3><p><code>SAVEGAME</code>：呼出保存存档界面；</p><p><code>LOADGAME</code>：呼出加载存档界面；</p><p>上面两条命令都只能在<code>SHOP</code>中调用。</p><p><code>PUTFORM</code>只能与一个名为<code>@SAVEINFO</code>的特殊函数一起使用，它可以用与PRINTFORM类似的格式来写出你的存档的概况。如该存档已经过去了多少天，角色的能力是什么，以及正在训练哪个角色等。</p><h3 id="关于begin" tabindex="-1">关于BEGIN <a class="header-anchor" href="#关于begin" aria-hidden="true">#</a></h3><p><code>BEGIN</code>可以通过调用各种系统指令来推进游戏。</p><p>正在执行的函数在调用<code>BEGIN</code>函数后会被终止，即使<code>BEGIN</code>函数从其他地方被<code>CALL</code>语句调用，它也不会返回到原来的函数。</p><p><code>BEGIN TRAIN</code>：开始训练；</p><p><code>BEGIN AFTERTRAIN</code>：结束训练；</p><p><code>BEGIN ABLUP</code>：呼出升级界面；</p><p><code>BEGIN TURNEND</code>：结束回合；</p><p><code>BEGIN SHOP</code>：呼出SHOP界面；</p></div></div><footer class="page-footer" data-v-7eddb2c4 data-v-fb8d84c6><div class="edit" data-v-fb8d84c6><div class="edit-link" data-v-fb8d84c6 data-v-1ed99556><!----></div></div><div class="updated" data-v-fb8d84c6><!----></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
-    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"c88d2c39\",\"guide_command documentation.md\":\"15c2e829\",\"guide_history.md\":\"549de93c\",\"guide_language specification.md\":\"287217e6\",\"guide_menu.md\":\"9c369ecb\",\"guide_quick start.md\":\"33004108\",\"guide_quick_start.md\":\"46bab50f\",\"guide_tutorials.md\":\"a592e964\",\"guide_index.md\":\"02beb753\",\"reference_csv_file.md\":\"ad8c2325\",\"reference_erb_compound_statements.md\":\"8e1721c0\",\"reference_erb_expressions.md\":\"3479e332\",\"reference_erb_internal_process.md\":\"abb9628b\",\"reference_erb_statements.md\":\"fb7ed1c2\",\"reference_erb_structure.md\":\"2507e50d\",\"reference_erb_variables.md\":\"29a7b71e\",\"reference_emuera code analyze.md\":\"7417295e\",\"reference_emuera manual.md\":\"10f573c0\",\"reference_era series history.md\":\"71a45e93\",\"reference_erabasic api reference.md\":\"269e50a0\",\"reference_erabasic manual.md\":\"592b6e34\",\"reference_erabasic quick start.md\":\"45db7dfd\",\"reference_erabasic tutorial.md\":\"5e8a5035\",\"reference_eramaker basic manual.md\":\"7a75a0f3\",\"reference_eramaker manual.md\":\"02d2f512\",\"reference_menu.md\":\"258bb060\",\"reference_player manual.md\":\"bd94fce0\",\"reference_index.md\":\"ad34652a\",\"translation_csv_file_format.md\":\"99d61432\",\"translation_configs.md\":\"48bf30ba\",\"translation_debug_commands.md\":\"993a591e\",\"translation_debug_modes.md\":\"53e62f51\",\"translation_difference.md\":\"4642cef7\",\"translation_erb_file_format.md\":\"a52686ff\",\"translation_emuera_dictionary.md\":\"a3235335\",\"translation_erabasic_structure.md\":\"67db7ab1\",\"translation_erabasic_variables.md\":\"0b0dcb0c\",\"translation_flow.md\":\"fb4e4c2f\",\"translation_new_features.md\":\"04dee8e9\",\"translation_replace_csv.md\":\"b5143fab\",\"translation_index.md\":\"e8accddf\"}")</script>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"0c554a1e\",\"guide_command documentation.md\":\"7dd90005\",\"guide_history.md\":\"a9bdfcee\",\"guide_language specification.md\":\"e0190a0f\",\"guide_menu.md\":\"d76667d2\",\"guide_quick start.md\":\"0af7e9eb\",\"guide_quick_start.md\":\"89ba02ec\",\"guide_tutorials.md\":\"4b10235d\",\"guide_index.md\":\"fa2a2e92\",\"reference_csv_file.md\":\"ee455899\",\"reference_erb_compound_statements.md\":\"dee9a5c4\",\"reference_erb_expressions.md\":\"568a4ea0\",\"reference_erb_internal_process.md\":\"66f09f77\",\"reference_erb_statements.md\":\"58ccc505\",\"reference_erb_structure.md\":\"b3e9c4f1\",\"reference_erb_variables.md\":\"771c0c8d\",\"reference_emuera code analyze.md\":\"7d652feb\",\"reference_emuera manual.md\":\"b1ee9fd0\",\"reference_era series history.md\":\"36d30126\",\"reference_erabasic api reference.md\":\"b171ce39\",\"reference_erabasic manual.md\":\"78356ff4\",\"reference_erabasic quick start.md\":\"2c186844\",\"reference_erabasic tutorial.md\":\"c7d80630\",\"reference_eramaker basic manual.md\":\"4e5608d0\",\"reference_eramaker manual.md\":\"a2f2f078\",\"reference_menu.md\":\"d0b2e37f\",\"reference_player manual.md\":\"c1675fc6\",\"reference_index.md\":\"57fea90b\",\"translation_csv_file_format.md\":\"64cbaf8f\",\"translation_configs.md\":\"1eb0d63e\",\"translation_debug_commands.md\":\"6d39ee97\",\"translation_debug_modes.md\":\"29e77be4\",\"translation_difference.md\":\"fdb338c7\",\"translation_erb_file_format.md\":\"4cade81d\",\"translation_emuera_dictionary.md\":\"fd5e307d\",\"translation_erabasic_structure.md\":\"912c7022\",\"translation_erabasic_variables.md\":\"00672eb2\",\"translation_flow.md\":\"38d8fc4b\",\"translation_new_features.md\":\"b582dfa3\",\"translation_replace_csv.md\":\"1d9e8141\",\"translation_index.md\":\"7ea598a1\"}")</script>
     <script type="module" async src="/Emuera-Chinese-Document/assets/app.b380940c.js"></script>
   </body>
 </html>
