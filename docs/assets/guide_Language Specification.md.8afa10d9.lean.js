@@ -1,1 +1,0 @@
-import{o as i,c as l,a as e}from"./app.e360dedc.js";const a='{"title":"","description":"","frontmatter":{},"relativePath":"guide/Language Specification.md","lastUpdated":1631248272174}',t={},n=[e('',3)];t.render=function(e,a,t,r,u,_){return i(),l("div",null,n)};export{a as __pageData,t as default};

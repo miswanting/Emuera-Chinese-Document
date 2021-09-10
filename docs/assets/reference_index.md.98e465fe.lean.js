@@ -1,0 +1,1 @@
+import{o as e,c as l,a}from"./app.e360dedc.js";const i='{"title":"参考目录","description":"","frontmatter":{},"relativePath":"reference/index.md","lastUpdated":1631250535313}',t={},r=[a('',2)];t.render=function(a,i,t,h,_,s){return e(),l("div",null,r)};export{i as __pageData,t as default};
