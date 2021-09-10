@@ -1,0 +1,1 @@
+import{o as t,c as e}from"./app.e360dedc.js";const a='{"title":"","description":"","frontmatter":{},"relativePath":"translation/Configs.md","lastUpdated":1631248272178}',r={};r.render=function(a,r,n,o,d,i){return t(),e("div")};export{a as __pageData,r as default};
