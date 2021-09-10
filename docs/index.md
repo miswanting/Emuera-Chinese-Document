@@ -33,7 +33,7 @@ footer: GPL-3.0+ Licensed | Copyright © 2021-Present Miswanting：：
    - :green_circle:`直译`[EraBasic 的变量](translation/EraBasic_Variables)
 2. Emuera 部分
    - :green_circle:`直译`[术语表](translation/Glossary)
-   - :yellow_circle:`直译`[调试命令](translation/Debug_Command)
+   - :green_circle:`直译`[调试命令](translation/Debug_Command)
    - :yellow_circle:`直译`[调试模式](translation/Debug_Mode)
    - :black_circle:`直译`[\_replace.csv]()
    - :black_circle:`直译`[强制配置项目]()
