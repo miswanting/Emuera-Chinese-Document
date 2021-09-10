@@ -16,7 +16,7 @@ features:
   - title: 更统一
     details: 原文档的组成由于历史原因，表现得比较松散。本文档除翻译部分外，对源文档结构进行了重构与聚合。
   - title: 更高效
-    本文档的部署使用了最新的文档框架 Vitepress。在表现力、编写和部署自动化都是及其便捷的。能够为文档内容提供一流的支持。
+    details: 本文档的部署使用了最新的文档框架 Vitepress。在表现力、编写和部署自动化都是及其便捷的。能够为文档内容提供一流的支持。
 footer: GPL-3.0+ Licensed | Copyright © 2021-Present Miswanting：：
 ---
 
