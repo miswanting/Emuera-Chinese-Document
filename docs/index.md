@@ -14,7 +14,7 @@ features:
   - title: 更通用
     details: 由于 Emuera 引擎本身设计定位存在特殊性，本文档在翻译与编写的时候进行了部分描述的脱敏。
   - title: 更统一
-    details: 原文档的组成由于历史原因，表现得比较松散。本文档除翻译部分外，对源文档结构进行了重构与聚合。
+    details: 原文档由于历史原因，组织得比较松散。本文档除翻译部分外，对源文档结构进行了全局重构与聚合。
   - title: 更高效
     details: 本文档的部署使用了最新的文档框架 Vitepress。在表现力、编写和部署自动化都是及其便捷的。能够为文档内容提供一流的支持。
 footer: GPL-3.0+ Licensed | Copyright © 2021-Present Miswanting：：
@@ -22,9 +22,13 @@ footer: GPL-3.0+ Licensed | Copyright © 2021-Present Miswanting：：
 
 [![Deploy GitHub Pages](https://github.com/miswanting/Emuera-Chinese-Document/actions/workflows/Deploy.yml/badge.svg)](https://github.com/miswanting/Emuera-Chinese-Document/actions/workflows/Deploy.yml)
 
-::: warning 提示
+::: danger 提示
 
-本文档正在**加急**制作中。
+本文档已移动至新的域名：
+- 全球：[https://miswanting.github.io/ecd/](https://miswanting.github.io/ecd/)
+- 中国大陆地区镜像：[https://miswanting.gitee.io/ecd/](https://miswanting.gitee.io/ecd/)
+
+当前地址即将废弃。再重复一遍，当前地址即将废弃。
 
 :::
 
