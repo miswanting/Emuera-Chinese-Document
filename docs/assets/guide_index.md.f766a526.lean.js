@@ -1,1 +1,0 @@
-import{o as a,c as t,a as e}from"./app.e360dedc.js";const r='{"title":"指南目录","description":"","frontmatter":{},"relativePath":"guide/index.md","lastUpdated":1631250535309}',i={},l=[e('',2)];i.render=function(e,r,i,d,h,o){return a(),t("div",null,l)};export{r as __pageData,i as default};

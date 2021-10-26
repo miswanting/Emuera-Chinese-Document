@@ -1,1 +1,0 @@
-import{o as e,c as p,a}from"./app.e360dedc.js";const o='{"title":"调试命令","description":"","frontmatter":{},"relativePath":"translation/Debug_Command.md","lastUpdated":1631250535313}',t={},d=[a('',17)];t.render=function(a,o,t,i,l,r){return e(),p("div",null,d)};export{o as __pageData,t as default};

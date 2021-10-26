@@ -1,0 +1,1 @@
+import{_ as i,c as l,o as e,d as t}from"./app.538194d4.js";const g='{"title":"","description":"","frontmatter":{},"relativePath":"guide/Language Specification.md","lastUpdated":1635210605223}',a={},_=t('',3),c=[_];function n(o,r,s,d,p,u){return e(),l("div",null,c)}var h=i(a,[["render",n]]);export{g as __pageData,h as default};
